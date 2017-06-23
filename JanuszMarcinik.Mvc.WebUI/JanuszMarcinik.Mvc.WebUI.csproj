@@ -467,9 +467,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56442</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/football</IISUrl>
+          <IISUrl>http://localhost/januszmarcinik_mvc</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/football</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost/januszmarcinik_mvc</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

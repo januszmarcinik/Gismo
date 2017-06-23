@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using JanuszMarcinik.Mvc.Extensions.SiteMap;
+using System.Web.Mvc;
 using TwitterBootstrap3;
 using TwitterBootstrapMVC.BootstrapMethods;
 using TwitterBootstrapMVC.Controls;
@@ -40,6 +41,11 @@ namespace JanuszMarcinik.Mvc.Extensions.Helpers
         public static BootstrapButton<TModel> SubmitDeleteButton<TModel>(this BootstrapBase<TModel> bootstrap) where TModel : class
         {
             return bootstrap.SubmitButton().Text("Usuń").PrependIcon(FontAwesome.remove).Style(ButtonStyle.Danger);
+        }
+
+        public static BootstrapActionLinkButton ActionLinkButton<TModel>(this BootstrapBase<TModel> bootstrap, string text, SiteMapAction siteMapAction) where TModel : class
+        {
+            return bootstrap.ActionLinkButton(text, siteMapAction.Action, siteMapAction.Controller).RouteValues(siteMapAction.RouteValues).PrependIcon(FontAwesome.android);
         }
     }
 }
