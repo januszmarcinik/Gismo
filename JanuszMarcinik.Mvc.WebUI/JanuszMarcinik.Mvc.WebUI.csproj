@@ -188,15 +188,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\font-awesome.css" />
-    <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\Site.css" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Assets\css\bootstrap-theme.css" />
+    <Content Include="Assets\css\bootstrap-theme.min.css" />
+    <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\font-awesome.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\Site.css" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Home\Views\web.config">
       <SubType>Designer</SubType>
@@ -221,14 +221,14 @@
     <Content Include="Areas\Account\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Account\Views\Manage\SetPassword.cshtml" />
     <Content Include="Areas\Account\Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Assets\css\bootstrap.min.css.map" />
+    <Content Include="Assets\css\bootstrap.css.map" />
+    <Content Include="Assets\css\bootstrap-theme.min.css.map" />
+    <Content Include="Assets\css\bootstrap-theme.css.map" />
     <Content Include="Areas\Account\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Lockout.cshtml" />
@@ -236,11 +236,11 @@
     <Content Include="Areas\Admin\Views\Seasons\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Seasons\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Seasons\Edit.cshtml" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
     <Content Include="Areas\Admin\Views\web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -265,34 +265,34 @@
     <Content Include="Areas\Admin\Views\Match\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Match\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Match\Edit.cshtml" />
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Images\bo_play_pattern.png" />
-    <Content Include="Images\Leagues\bundesliga.png" />
-    <Content Include="Images\Leagues\darmstadt.png" />
-    <Content Include="Images\Teams\Bundesliga\borussia-dortmund.png" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <None Include="Scripts\_references.js" />
+    <None Include="Assets\js\jquery-3.1.1.intellisense.js" />
+    <Content Include="App_Data\Images\bo_play_pattern.png" />
+    <Content Include="App_Data\Images\Leagues\bundesliga.png" />
+    <Content Include="App_Data\Images\Leagues\darmstadt.png" />
+    <Content Include="App_Data\Images\Teams\Bundesliga\borussia-dortmund.png" />
+    <Content Include="Assets\js\bootstrap.js" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\jquery-3.1.1.js" />
+    <Content Include="Assets\js\jquery-3.1.1.min.js" />
+    <Content Include="Assets\js\jquery-3.1.1.slim.js" />
+    <Content Include="Assets\js\jquery-3.1.1.slim.min.js" />
+    <Content Include="Assets\js\jquery-3.1.1.slim.min.map" />
+    <Content Include="Assets\js\jquery-3.1.1.min.map" />
+    <None Include="Assets\js\jquery.validate-vsdoc.js" />
+    <Content Include="Assets\js\jquery.validate.js" />
+    <Content Include="Assets\js\jquery.validate.min.js" />
+    <Content Include="Assets\js\jquery.validate.unobtrusive.js" />
+    <Content Include="Assets\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Assets\js\modernizr-2.8.3.js" />
+    <Content Include="Assets\js\respond.js" />
+    <Content Include="Assets\js\respond.min.js" />
+    <None Include="Assets\js\_references.js" />
     <None Include="T4MVC\T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
     <None Include="T4MVC\T4MVC.tt.settings.xml" />
-    <Content Include="Scripts\TwitterBootstrapMvcJs.js" />
+    <Content Include="Assets\js\TwitterBootstrapMvcJs.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -346,7 +346,6 @@
     <Compile Include="Areas\Admin\Models\Teams\TeamDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Teams\TeamViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TimeTables\TimeTableSelectViewModels.cs" />
-    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -435,7 +434,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Account\Views\Image\" />
     <Folder Include="Areas\Home\Models\" />
   </ItemGroup>

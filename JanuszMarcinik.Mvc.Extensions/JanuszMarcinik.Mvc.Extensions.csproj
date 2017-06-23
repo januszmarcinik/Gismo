@@ -84,7 +84,6 @@
     <Compile Include="Helpers\ButtonsHelper.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
     <Compile Include="Helpers\FontAwesome.cs" />
-    <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\LinksHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteMap\AreaMap.cs" />

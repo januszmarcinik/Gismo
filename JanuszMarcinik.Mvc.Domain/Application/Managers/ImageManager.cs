@@ -5,7 +5,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Managers
 {
     public class ImageManager
     {
-        private string _mainPath = "Images"; 
+        private string _mainPath = "App_Data/Images"; 
         private ImageFolder _folder;
         private string _subFolder;
 

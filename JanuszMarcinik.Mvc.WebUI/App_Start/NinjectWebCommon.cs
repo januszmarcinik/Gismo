@@ -10,6 +10,8 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using JanuszMarcinik.Mvc.Domain.Application.Services;
+    using JanuszMarcinik.Mvc.Domain.Identity.Context;
 
     public static class NinjectWebCommon 
     {
@@ -61,7 +63,16 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            System.Web.Mvc.DependencyResolver.SetResolver(new JanuszMarcinik.Mvc.WebUI.Infrastructure.NinjectDependencyResolver(kernel));
+            kernel.Bind<GoalService>().ToSelf().InRequestScope();
+            kernel.Bind<LeagueService>().ToSelf().InRequestScope();
+            kernel.Bind<MatchDayService>().ToSelf().InRequestScope();
+            kernel.Bind<MatchService>().ToSelf().InRequestScope();
+            kernel.Bind<PlayerService>().ToSelf().InRequestScope();
+            kernel.Bind<SeasonService>().ToSelf().InRequestScope();
+            kernel.Bind<TableService>().ToSelf().InRequestScope();
+            kernel.Bind<TeamService>().ToSelf().InRequestScope();
+
+            kernel.Bind<ApplicationIdentityDbContext>().ToSelf().InRequestScope();
         }        
     }
 }
