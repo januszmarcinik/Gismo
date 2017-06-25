@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace JanuszMarcinik.Mvc.Domain.Repositories.Identity
 {
-    public class ApplicationSignInManager : SignInManager<ApplicationUser, int>
+    public class ApplicationSignInManager : SignInManager<User, int>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }

@@ -119,8 +119,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Base\BaseService.cs" />
-    <Compile Include="Application\Base\IApplicationEntity.cs" />
     <Compile Include="Application\DataSource\CustomPropertyInfo.cs" />
     <Compile Include="Application\DataSource\DataItem.cs" />
     <Compile Include="Application\DataSource\DataSource.cs" />
@@ -128,39 +126,26 @@
     <Compile Include="Application\DataSource\GridModel.cs" />
     <Compile Include="Application\DataSource\ImagePathAttribute.cs" />
     <Compile Include="Application\DataSource\PrimaryKeyAttribute.cs" />
-    <Compile Include="Application\Entities\Goal.cs" />
-    <Compile Include="Application\Entities\League.cs" />
-    <Compile Include="Application\Entities\Match.cs" />
-    <Compile Include="Application\Entities\MatchDay.cs" />
-    <Compile Include="Application\Entities\Player.cs" />
-    <Compile Include="Application\Entities\Season.cs" />
-    <Compile Include="Application\Entities\Table.cs" />
-    <Compile Include="Application\Entities\Team.cs" />
-    <Compile Include="Application\Managers\ImageManager.cs" />
-    <Compile Include="Application\Services\GoalService.cs" />
-    <Compile Include="Application\Services\LeagueService.cs" />
-    <Compile Include="Application\Services\MatchDayService.cs" />
-    <Compile Include="Application\Services\MatchService.cs" />
-    <Compile Include="Application\Services\PlayerService.cs" />
-    <Compile Include="Application\Services\SeasonService.cs" />
-    <Compile Include="Application\Services\TableService.cs" />
-    <Compile Include="Application\Services\TeamService.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\DbSchemas.cs" />
-    <Compile Include="Identity\Services\EmailService.cs" />
-    <Compile Include="Identity\Services\SmsService.cs" />
+    <Compile Include="Data\Entity.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Identity\ApplicationRole.cs" />
-    <Compile Include="Models\Identity\ApplicationUserClaim.cs" />
-    <Compile Include="Models\Identity\ApplicationUserLogin.cs" />
-    <Compile Include="Models\Identity\ApplicationUser.cs" />
-    <Compile Include="Models\Identity\ApplicationUserRole.cs" />
+    <Compile Include="Models\Examples\ExampleChild.cs" />
+    <Compile Include="Models\Examples\ExampleParent.cs" />
+    <Compile Include="Models\Identity\Role.cs" />
+    <Compile Include="Models\Identity\UserClaim.cs" />
+    <Compile Include="Models\Identity\UserLogin.cs" />
+    <Compile Include="Models\Identity\User.cs" />
+    <Compile Include="Models\Identity\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Identity\ApplicationRoleManager.cs" />
     <Compile Include="Repositories\Identity\ApplicationRoleStore.cs" />
     <Compile Include="Repositories\Identity\ApplicationSignInManager.cs" />
     <Compile Include="Repositories\Identity\ApplicationUserManager.cs" />
     <Compile Include="Repositories\Identity\ApplicationUserStore.cs" />
+    <Compile Include="Services\Messages\EmailService.cs" />
+    <Compile Include="Services\Messages\SmsService.cs" />
+    <Compile Include="Services\Storage\ImagesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

@@ -232,39 +232,17 @@
     <Content Include="Areas\Account\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Home\Views\Manage\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Seasons\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Seasons\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Seasons\Edit.cshtml" />
     <Content Include="Assets\fonts\fontawesome-webfont.eot" />
     <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
     <Content Include="Assets\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\fonts\FontAwesome.otf" />
-    <Content Include="Areas\Admin\Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Teams\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Teams\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Teams\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Leagues\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Leagues\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Leagues\Edit.cshtml" />
     <Content Include="Areas\Account\Views\Users\Index.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Delete.cshtml" />
     <Content Include="Areas\Account\Views\Users\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Configuration\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TimeTable\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\MatchDays\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\MatchDays\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\MatchDays\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TimeTable\LeaguesList.cshtml" />
-    <Content Include="Areas\Admin\Views\Match\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Match\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Match\Edit.cshtml" />
+    <Content Include="Areas\Example\Views\web.config" />
     <None Include="Assets\js\jquery-3.1.1.intellisense.js" />
     <Content Include="App_Data\Images\bo_play_pattern.png" />
     <Content Include="App_Data\Images\Leagues\bundesliga.png" />
@@ -301,7 +279,6 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Areas\Account\AccountProfile.cs" />
-    <Compile Include="Areas\Account\Controllers\ImageController.cs" />
     <Compile Include="Areas\Account\Controllers\ManageController.cs" />
     <Compile Include="Areas\Account\Controllers\RolesController.cs" />
     <Compile Include="Areas\Account\Controllers\UsersController.cs" />
@@ -326,26 +303,7 @@
     <Compile Include="Areas\Account\Models\Roles\RoleViewModel.cs" />
     <Compile Include="Areas\Account\Models\Users\UserDataSource.cs" />
     <Compile Include="Areas\Account\Models\Users\UserViewModel.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\AdminProfile.cs" />
-    <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
-    <Compile Include="Areas\Admin\Controllers\LeaguesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\MatchController.cs" />
-    <Compile Include="Areas\Admin\Controllers\MatchDaysController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SeasonsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TeamsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TimeTableController.cs" />
-    <Compile Include="Areas\Admin\Models\Leagues\LeagueDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Leagues\LeagueViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\MatchDays\MatchDayDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\MatchDays\MatchDayViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Matches\MatchDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Matches\MatchViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Seasons\SeasonDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Seasons\SeasonViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Teams\TeamDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Teams\TeamViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\TimeTables\TimeTableSelectViewModels.cs" />
+    <Compile Include="Areas\Example\ExampleAreaRegistration.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -373,25 +331,7 @@
     <Compile Include="T4MVC\Account.UsersController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Admin.ConfigurationController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.LeaguesController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.MatchController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.MatchDaysController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.SeasonsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.TeamsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.TimeTableController.generated.cs">
+    <Compile Include="T4MVC\Example.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Home.HomeController.generated.cs">
@@ -431,7 +371,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Account\Views\Image\" />
+    <Folder Include="Areas\Example\Controllers\" />
+    <Folder Include="Areas\Example\Models\" />
+    <Folder Include="Areas\Example\Views\Shared\" />
     <Folder Include="Areas\Home\Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -18,9 +18,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account
         #region AccountProfile()
         public AccountProfile()
         {
-            CreateMap<ApplicationRole, RoleViewModel>();
+            CreateMap<Role, RoleViewModel>();
 
-            CreateMap<ApplicationUser, UserViewModel>()
+            CreateMap<User, UserViewModel>()
                 .Ignore(p => p.SelectedRoles)
                 .Ignore(p => p.AllRoles);
         }

@@ -47,7 +47,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         {
             if (ModelState.IsValid)
             {
-                _roleManager.Create(new ApplicationRole() { Name = model.Name });
+                _roleManager.Create(new Role() { Name = model.Name });
                 return RedirectToAction(MVC.Account.Roles.List());
             }
 

@@ -23,9 +23,9 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace T4MVC.Account
+namespace T4MVC.Example
 {
-    public class ImageController
+    public class SharedController
     {
 
         static readonly ViewsClass s_views = new ViewsClass();

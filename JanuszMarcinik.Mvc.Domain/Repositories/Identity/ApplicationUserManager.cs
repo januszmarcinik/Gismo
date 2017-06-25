@@ -1,6 +1,6 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Data;
-using JanuszMarcinik.Mvc.Domain.Identity.Services;
 using JanuszMarcinik.Mvc.Domain.Models.Identity;
+using JanuszMarcinik.Mvc.Domain.Services.Messages;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -9,9 +9,9 @@ using System;
 namespace JanuszMarcinik.Mvc.Domain.Repositories.Identity
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserManager : UserManager<ApplicationUser, int>
+    public class ApplicationUserManager : UserManager<User, int>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser, int> store)
+        public ApplicationUserManager(IUserStore<User, int> store)
             : base(store)
         {
         }
@@ -20,7 +20,7 @@ namespace JanuszMarcinik.Mvc.Domain.Repositories.Identity
         {
             var manager = new ApplicationUserManager(new ApplicationUserStore(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ApplicationUser, int>(manager)
+            manager.UserValidator = new UserValidator<User, int>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -43,11 +43,11 @@ namespace JanuszMarcinik.Mvc.Domain.Repositories.Identity
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser, int>
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<User, int>
             {
                 MessageFormat = "Your security code is {0}"
             });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser, int>
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<User, int>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -58,7 +58,7 @@ namespace JanuszMarcinik.Mvc.Domain.Repositories.Identity
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<ApplicationUser, int>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<User, int>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }

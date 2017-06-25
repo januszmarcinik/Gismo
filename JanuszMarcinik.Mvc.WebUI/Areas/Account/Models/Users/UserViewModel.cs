@@ -11,7 +11,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
     {
         public UserViewModel()
         {
-            this.Roles = new List<ApplicationUserRole>();
+            this.Roles = new List<UserRole>();
             this.AllRoles = new List<SelectListItem>();
             this.SelectedRoles = new List<int>();
         }
@@ -27,7 +27,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        public ICollection<ApplicationUserRole> Roles { get; set; }
+        public ICollection<UserRole> Roles { get; set; }
 
         public IEnumerable<int> SelectedRoles { get; set; }
         public List<SelectListItem> AllRoles { get; set; }

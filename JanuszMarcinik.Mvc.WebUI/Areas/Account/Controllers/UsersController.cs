@@ -90,7 +90,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
                 user.Roles.Clear();
                 foreach (var selectedRole in model.SelectedRoles)
                 {
-                    user.Roles.Add(new ApplicationUserRole()
+                    user.Roles.Add(new UserRole()
                     {
                         RoleId = selectedRole,
                         UserId = user.Id

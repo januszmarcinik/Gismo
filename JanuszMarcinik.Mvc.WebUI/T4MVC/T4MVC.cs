@@ -29,8 +29,8 @@ public static partial class MVC
 {
     static readonly AccountClass s_Account = new AccountClass();
     public static AccountClass Account { get { return s_Account; } }
-    static readonly AdminClass s_Admin = new AdminClass();
-    public static AdminClass Admin { get { return s_Admin; } }
+    static readonly ExampleClass s_Example = new ExampleClass();
+    public static ExampleClass Example { get { return s_Example; } }
     static readonly HomeClass s_Home = new HomeClass();
     public static HomeClass Home { get { return s_Home; } }
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
@@ -43,23 +43,17 @@ namespace T4MVC
     {
         public readonly string Name = "Account";
         public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.AccountController Account = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_AccountController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.ImageController Image = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_ImageController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.ManageController Manage = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_ManageController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.RolesController Roles = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_RolesController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.UsersController Users = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_UsersController();
+        public T4MVC.Account.ImageController Image = new T4MVC.Account.ImageController();
         public T4MVC.Account.SharedController Shared = new T4MVC.Account.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class AdminClass
+    public class ExampleClass
     {
-        public readonly string Name = "Admin";
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.ConfigurationController Configuration = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_ConfigurationController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.LeaguesController Leagues = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_LeaguesController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.MatchController Match = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_MatchController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.MatchDaysController MatchDays = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_MatchDaysController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.SeasonsController Seasons = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_SeasonsController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TeamsController Teams = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TeamsController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TimeTableController TimeTable = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TimeTableController();
+        public readonly string Name = "Example";
+        public T4MVC.Example.SharedController Shared = new T4MVC.Example.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class HomeClass
@@ -89,19 +83,6 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
     }
      
     public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
-    
-    public string Controller { get; set; }
-    public string Action { get; set; }
-    public string Protocol { get; set; }
-    public RouteValueDictionary RouteValueDictionary { get; set; }
-}
-[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.FileContentResult, IT4MVCActionResult
-{
-    public T4MVC_System_Web_Mvc_FileContentResult(string area, string controller, string action, string protocol = null): base(new byte[0], " ")
-    {
-        this.InitMVCT4Result(area, controller, action, protocol);
-    }
     
     public string Controller { get; set; }
     public string Action { get; set; }
