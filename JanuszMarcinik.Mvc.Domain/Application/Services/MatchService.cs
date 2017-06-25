@@ -1,5 +1,6 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Base;
 using JanuszMarcinik.Mvc.Domain.Application.Entities;
+using JanuszMarcinik.Mvc.Domain.Data;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;

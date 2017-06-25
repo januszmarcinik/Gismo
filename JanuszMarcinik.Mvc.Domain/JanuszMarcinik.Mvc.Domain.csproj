@@ -119,7 +119,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Base\ApplicationDbContext.cs" />
     <Compile Include="Application\Base\BaseService.cs" />
     <Compile Include="Application\Base\IApplicationEntity.cs" />
     <Compile Include="Application\DataSource\CustomPropertyInfo.cs" />
@@ -129,7 +128,6 @@
     <Compile Include="Application\DataSource\GridModel.cs" />
     <Compile Include="Application\DataSource\ImagePathAttribute.cs" />
     <Compile Include="Application\DataSource\PrimaryKeyAttribute.cs" />
-    <Compile Include="Application\DataSource\PrimaryKeyStringAttribute.cs" />
     <Compile Include="Application\Entities\Goal.cs" />
     <Compile Include="Application\Entities\League.cs" />
     <Compile Include="Application\Entities\Match.cs" />
@@ -139,7 +137,6 @@
     <Compile Include="Application\Entities\Table.cs" />
     <Compile Include="Application\Entities\Team.cs" />
     <Compile Include="Application\Managers\ImageManager.cs" />
-    <Compile Include="Application\Migrations\Configuration.cs" />
     <Compile Include="Application\Services\GoalService.cs" />
     <Compile Include="Application\Services\LeagueService.cs" />
     <Compile Include="Application\Services\MatchDayService.cs" />
@@ -148,14 +145,22 @@
     <Compile Include="Application\Services\SeasonService.cs" />
     <Compile Include="Application\Services\TableService.cs" />
     <Compile Include="Application\Services\TeamService.cs" />
-    <Compile Include="Identity\Context\ApplicationIdentityDbContext.cs" />
-    <Compile Include="Identity\Entities\ApplicationUser.cs" />
-    <Compile Include="Identity\Managers\ApplicationSignInManager.cs" />
-    <Compile Include="Identity\Managers\ApplicationUserManager.cs" />
-    <Compile Include="Identity\Migrations\Configuration.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\DbSchemas.cs" />
     <Compile Include="Identity\Services\EmailService.cs" />
     <Compile Include="Identity\Services\SmsService.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Identity\ApplicationRole.cs" />
+    <Compile Include="Models\Identity\ApplicationUserClaim.cs" />
+    <Compile Include="Models\Identity\ApplicationUserLogin.cs" />
+    <Compile Include="Models\Identity\ApplicationUser.cs" />
+    <Compile Include="Models\Identity\ApplicationUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Identity\ApplicationRoleManager.cs" />
+    <Compile Include="Repositories\Identity\ApplicationRoleStore.cs" />
+    <Compile Include="Repositories\Identity\ApplicationSignInManager.cs" />
+    <Compile Include="Repositories\Identity\ApplicationUserManager.cs" />
+    <Compile Include="Repositories\Identity\ApplicationUserStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

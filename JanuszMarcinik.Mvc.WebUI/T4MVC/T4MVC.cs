@@ -60,7 +60,6 @@ namespace T4MVC
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.SeasonsController Seasons = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_SeasonsController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TeamsController Teams = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TeamsController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TimeTableController TimeTable = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TimeTableController();
-        public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class HomeClass
@@ -114,89 +113,10 @@ internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.F
 
 namespace Links
 {
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public static class Scripts {
-        public const string UrlPath = "~/Scripts";
-        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-        public static readonly string _references_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/_references.min.js") ? Url("_references.min.js") : Url("_references.js");
-        public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
-        public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
-        public static readonly string jquery_3_1_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.intellisense.min.js") ? Url("jquery-3.1.1.intellisense.min.js") : Url("jquery-3.1.1.intellisense.js");
-        public static readonly string jquery_3_1_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.min.js") ? Url("jquery-3.1.1.min.js") : Url("jquery-3.1.1.js");
-        public static readonly string jquery_3_1_1_min_js = Url("jquery-3.1.1.min.js");
-        public static readonly string jquery_3_1_1_min_map = Url("jquery-3.1.1.min.map");
-        public static readonly string jquery_3_1_1_slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-3.1.1.slim.min.js") ? Url("jquery-3.1.1.slim.min.js") : Url("jquery-3.1.1.slim.js");
-        public static readonly string jquery_3_1_1_slim_min_js = Url("jquery-3.1.1.slim.min.js");
-        public static readonly string jquery_3_1_1_slim_min_map = Url("jquery-3.1.1.slim.min.map");
-        public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
-        public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
-        public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
-        public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
-        public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
-        public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
-        public static readonly string respond_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/respond.min.js") ? Url("respond.min.js") : Url("respond.js");
-        public static readonly string respond_min_js = Url("respond.min.js");
-        public static readonly string TwitterBootstrapMvcJs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/TwitterBootstrapMvcJs.min.js") ? Url("TwitterBootstrapMvcJs.min.js") : Url("TwitterBootstrapMvcJs.js");
-    }
-
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public static class Content {
-        public const string UrlPath = "~/Content";
-        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
-        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
-        public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
-        public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
-        public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
-        public static readonly string bootstrap_theme_min_css_map = Url("bootstrap-theme.min.css.map");
-        public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
-        public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
-        public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
-        public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
-        public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
-        public static readonly string font_awesome_min_css = Url("font-awesome.min.css");
-        public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
-    }
-
     
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public static partial class Bundles
     {
-        public static partial class Scripts 
-        {
-            public static class Assets
-            {
-                public const string _references_js = "~/Scripts/_references.js"; 
-                public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
-                public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
-                public const string jquery_3_1_1_intellisense_js = "~/Scripts/jquery-3.1.1.intellisense.js"; 
-                public const string jquery_3_1_1_js = "~/Scripts/jquery-3.1.1.js"; 
-                public const string jquery_3_1_1_min_js = "~/Scripts/jquery-3.1.1.min.js"; 
-                public const string jquery_3_1_1_slim_js = "~/Scripts/jquery-3.1.1.slim.js"; 
-                public const string jquery_3_1_1_slim_min_js = "~/Scripts/jquery-3.1.1.slim.min.js"; 
-                public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
-                public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
-                public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
-                public const string jquery_validate_unobtrusive_min_js = "~/Scripts/jquery.validate.unobtrusive.min.js"; 
-                public const string modernizr_2_8_3_js = "~/Scripts/modernizr-2.8.3.js"; 
-                public const string respond_js = "~/Scripts/respond.js"; 
-                public const string respond_min_js = "~/Scripts/respond.min.js"; 
-                public const string TwitterBootstrapMvcJs_js = "~/Scripts/TwitterBootstrapMvcJs.js"; 
-            }
-        }
-        public static partial class Content 
-        {
-            public static class Assets
-            {
-                public const string bootstrap_theme_css = "~/Content/bootstrap-theme.css";
-                public const string bootstrap_theme_min_css = "~/Content/bootstrap-theme.min.css";
-                public const string bootstrap_css = "~/Content/bootstrap.css";
-                public const string bootstrap_min_css = "~/Content/bootstrap.min.css";
-                public const string font_awesome_css = "~/Content/font-awesome.css";
-                public const string font_awesome_min_css = "~/Content/font-awesome.min.css";
-                public const string Site_css = "~/Content/Site.css";
-            }
-        }
     }
 }
 

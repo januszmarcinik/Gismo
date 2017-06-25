@@ -11,7 +11,7 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using JanuszMarcinik.Mvc.Domain.Application.Services;
-    using JanuszMarcinik.Mvc.Domain.Identity.Context;
+    using JanuszMarcinik.Mvc.Domain.Data;
 
     public static class NinjectWebCommon 
     {
@@ -72,7 +72,7 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
             kernel.Bind<TableService>().ToSelf().InRequestScope();
             kernel.Bind<TeamService>().ToSelf().InRequestScope();
 
-            kernel.Bind<ApplicationIdentityDbContext>().ToSelf().InRequestScope();
+            kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
         }        
     }
 }

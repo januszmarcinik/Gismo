@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using JanuszMarcinik.Mvc.Domain.Data;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 

@@ -39,14 +39,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                         PrimaryKeyProperty = true
                     });
                 }
-                else if (prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(PrimaryKeyStringAttribute)) != null)
-                {
-                    this.Properties.Add(new CustomPropertyInfo()
-                    {
-                        PropertyName = prop.Name,
-                        PrimaryKeyStringProperty = true
-                    });
-                }
                 else if (prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(ImagePathAttribute)) != null)
                 {
                     this.Properties.Add(new CustomPropertyInfo()
@@ -83,11 +75,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                 {
                     if (prop.PrimaryKeyProperty)
                     {
-                        row.PrimaryKeyId = (long)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
-                    }
-                    else if (prop.PrimaryKeyStringProperty)
-                    {
-                        row.PrimaryKeyStringId = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
+                        row.PrimaryKeyId = (int)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
                     }
                     else if (prop.ImagePathProperty)
                     {

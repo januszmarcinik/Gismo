@@ -1,13 +1,13 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using JanuszMarcinik.Mvc.Domain.Models.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using JanuszMarcinik.Mvc.Domain.Identity.Entities;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
-namespace JanuszMarcinik.Mvc.Domain.Identity.Managers
+namespace JanuszMarcinik.Mvc.Domain.Repositories.Identity
 {
-    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    public class ApplicationSignInManager : SignInManager<ApplicationUser, int>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)

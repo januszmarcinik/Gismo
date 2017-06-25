@@ -3,6 +3,7 @@ using JanuszMarcinik.Mvc.Domain.Application.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using JanuszMarcinik.Mvc.Domain.Data;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.Services
 {

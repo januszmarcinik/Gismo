@@ -1,11 +1,21 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Entities;
+using JanuszMarcinik.Mvc.Domain.Models.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
-namespace JanuszMarcinik.Mvc.Domain.Application.Base
+namespace JanuszMarcinik.Mvc.Domain.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
     {
-        public ApplicationDbContext() : base("JanuszMarcinikConnection") { }
+        public ApplicationDbContext()
+            : base("JanuszMarcinikConnection")
+        {
+        }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
 
         public DbSet<Goal> Goals { get; set; }
         public DbSet<League> Leagues { get; set; }

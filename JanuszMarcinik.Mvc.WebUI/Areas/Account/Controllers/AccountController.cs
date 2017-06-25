@@ -6,8 +6,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Account;
-using JanuszMarcinik.Mvc.Domain.Identity.Managers;
-using JanuszMarcinik.Mvc.Domain.Identity.Entities;
+using JanuszMarcinik.Mvc.Domain.Repositories.Identity;
+using JanuszMarcinik.Mvc.Domain.Models.Identity;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
 {
@@ -157,9 +157,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
 
         #region ConfirmEmail
         [AllowAnonymous]
-        public virtual async Task<ActionResult> ConfirmEmail(string userId, string code)
+        public virtual async Task<ActionResult> ConfirmEmail(int userId, string code)
         {
-            if (userId == null || code == null)
+            if (userId == 0 || code == null)
             {
                 return View(MVC.Account.Shared.Views.Error);
             }
