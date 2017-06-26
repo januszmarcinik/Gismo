@@ -11,6 +11,8 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using JanuszMarcinik.Mvc.Domain.Data;
+    using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract;
+    using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Concrete;
 
     public static class NinjectWebCommon 
     {
@@ -63,6 +65,8 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
+
+            kernel.Bind<IExampleParentsRepository>().To<ExampleParentsRepository>().InSingletonScope();
         }        
     }
 }

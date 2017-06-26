@@ -138,6 +138,8 @@
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Models\Identity\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Examples\Abstract\IExampleParentsRepository.cs" />
+    <Compile Include="Repositories\Examples\Concrete\ExampleParentsRepository.cs" />
     <Compile Include="Repositories\Identity\ApplicationRoleManager.cs" />
     <Compile Include="Repositories\Identity\ApplicationRoleStore.cs" />
     <Compile Include="Repositories\Identity\ApplicationSignInManager.cs" />

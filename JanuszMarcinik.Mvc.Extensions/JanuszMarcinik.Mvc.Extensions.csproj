@@ -88,8 +88,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteMap\AreaMap.cs" />
     <Compile Include="SiteMap\Areas\AreaAccount.cs" />
+    <Compile Include="SiteMap\Areas\AreaExample.cs" />
     <Compile Include="SiteMap\ControllerMap.cs" />
     <Compile Include="SiteMap\Controllers\Account\ControllerAccount.cs" />
+    <Compile Include="SiteMap\Controllers\Example\ControllerExampleParents.cs" />
     <Compile Include="SiteMap\JMSM.cs" />
     <Compile Include="SiteMap\SiteMapAction.cs" />
   </ItemGroup>

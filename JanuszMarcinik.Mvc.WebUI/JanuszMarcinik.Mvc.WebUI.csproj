@@ -243,6 +243,10 @@
     <Content Include="Areas\Account\Views\Roles\Delete.cshtml" />
     <Content Include="Areas\Account\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Example\Views\web.config" />
+    <Content Include="Areas\Example\Views\ExampleParents\Create.cshtml" />
+    <Content Include="Areas\Example\Views\ExampleParents\Delete.cshtml" />
+    <Content Include="Areas\Example\Views\ExampleParents\Edit.cshtml" />
+    <Content Include="Areas\Example\Views\_ViewStart.cshtml" />
     <None Include="Assets\js\jquery-3.1.1.intellisense.js" />
     <Content Include="App_Data\Images\bo_play_pattern.png" />
     <Content Include="App_Data\Images\Leagues\bundesliga.png" />
@@ -303,7 +307,11 @@
     <Compile Include="Areas\Account\Models\Roles\RoleViewModel.cs" />
     <Compile Include="Areas\Account\Models\Users\UserDataSource.cs" />
     <Compile Include="Areas\Account\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Example\Controllers\ExampleParentsController.cs" />
     <Compile Include="Areas\Example\ExampleAreaRegistration.cs" />
+    <Compile Include="Areas\Example\ExampleProfile.cs" />
+    <Compile Include="Areas\Example\Models\ExampleParents\ExampleParentDataSource.cs" />
+    <Compile Include="Areas\Example\Models\ExampleParents\ExampleParentViewModel.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -371,9 +379,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Example\Controllers\" />
-    <Folder Include="Areas\Example\Models\" />
-    <Folder Include="Areas\Example\Views\Shared\" />
     <Folder Include="Areas\Home\Models\" />
   </ItemGroup>
   <ItemGroup>

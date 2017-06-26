@@ -1,0 +1,35 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentViewModel
+
+@{
+    ViewBag.Title = "Nowy parent";
+}
+
+<h2 class="center-block">
+    <span class="label label-success center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Text)
+                    @form.FormGroup().TextAreaFor(x => x.LongText)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                
+            </div>
+        }
+    }
+}

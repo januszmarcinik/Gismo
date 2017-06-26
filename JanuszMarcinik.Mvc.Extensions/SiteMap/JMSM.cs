@@ -8,5 +8,6 @@ namespace JanuszMarcinik.Mvc.Extensions.SiteMap
     public static class JMSM
     {
         public static AreaAccount Account { get; } = new AreaAccount(name: "Account", description: "Konto");
+        public static AreaExample Example { get; } = new AreaExample(name: "Example", description: "Test area");
     }
 }

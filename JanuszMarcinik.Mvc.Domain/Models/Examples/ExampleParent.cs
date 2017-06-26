@@ -9,7 +9,6 @@ namespace JanuszMarcinik.Mvc.Domain.Models.Examples
     {
         public string Text { get; set; }
         public string LongText { get; set; }
-        public DateTime Date { get; set; }
 
         public ICollection<ExampleChild> Childrens { get; set; }
     }
