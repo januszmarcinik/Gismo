@@ -26,10 +26,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #region List()
         public virtual ActionResult List()
         {
-            var model = new RoleDataSource();
-            model.Initialize(Mapper.Map<List<RoleViewModel>>(_roleManager.Roles));
+            var datasource = new RoleDataSource()
+            {
+                Model = Mapper.Map<List<RoleViewModel>>(_roleManager.Roles)
+            };
 
-            return View(MVC.Shared.Views._Grid, model.GetGridModel());
+            return View(MVC.Shared.Views._Grid, datasource.GetGridModel());
         }
         #endregion
 

@@ -20,10 +20,13 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
 
         public virtual ActionResult List(int parentId)
         {
-            var model = new ExampleChildDataSource();
-            model.Initialize(Mapper.Map<List<ExampleChildViewModel>>(_exampleChildrensRepository.GetByParentId(parentId)));
+            var datasource = new ExampleChildDataSource(parentId)
+            {
+                Model = Mapper.Map<List<ExampleChildViewModel>>(_exampleChildrensRepository.GetByParentId(parentId))
+            };
+            datasource.Initialize();
 
-            return View(MVC.Shared.Views._Grid, model.GetGridModel());
+            return View(MVC.Shared.Views._Grid, datasource.GetGridModel());
         }
 
         #region Create()

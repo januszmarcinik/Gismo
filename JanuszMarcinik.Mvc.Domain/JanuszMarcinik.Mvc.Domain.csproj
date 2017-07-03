@@ -127,6 +127,7 @@
     <Compile Include="DataSource\DataSource.cs" />
     <Compile Include="DataSource\Grid\GridModel.cs" />
     <Compile Include="DataSource\Grid\GridRow.cs" />
+    <Compile Include="DataSource\Grid\GridSortOrder.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\DbSchemas.cs" />
     <Compile Include="Data\Entity.cs" />

@@ -50,10 +50,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #region List()
         public virtual ActionResult List()
         {
-            var model = new UserDataSource();
-            model.Initialize(Mapper.Map<List<UserViewModel>>(UserManager.Users));
+            var datasource = new UserDataSource()
+            {
+                Model = Mapper.Map<List<UserViewModel>>(UserManager.Users)
+            };
 
-            return View(MVC.Shared.Views._Grid, model.GetGridModel());
+            return View(MVC.Shared.Views._Grid, datasource.GetGridModel());
         }
         #endregion
 

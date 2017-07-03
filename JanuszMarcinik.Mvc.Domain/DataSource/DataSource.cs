@@ -11,40 +11,80 @@ namespace JanuszMarcinik.Mvc.Domain.DataSource
 {
     public abstract class DataSource<TModel> where TModel : class
     {
-        #region DataSource()
-        public DataSource()
-        {
-            this.UseAsyncActionMethods = true;
-            this.Properties = new List<CustomPropertyInfo>();
-            this.Rows = new List<GridRow>();
-        }
-        #endregion
+        public IEnumerable<TModel> Model { get; set; }
+
+        public GridSortOrder SortOrder { get; set; } = GridSortOrder.ASC;
+        public string OrderBy { get; set; }
+
+        private GridModel GridModel { get; set; }
 
         private List<CustomPropertyInfo> Properties { get; set; }
         private List<GridRow> Rows { get; set; }
 
         protected ActionResult AddAction { get; set; }
         protected ActionResult BackAction { get; set; }
+        protected ActionResult ListAction { get; set; }
+
+        protected string PrimaryKeyName { get; set; } = "id";
+        protected Task<ActionResult> EditAction { get; set; }
 
         protected string Title { get; set; }
 
-        protected bool UseAsyncActionMethods { get; set; }
-
         #region Initialize()
-        public virtual void Initialize(IEnumerable<TModel> model)
+        public virtual void Initialize()
         {
-            if (model.Count() > 0)
+            if (this.Model == null)
             {
-                SetProperties(model.First().GetType().GetProperties());
+                this.Model = new List<TModel>();
             }
 
-            SetRows(model);
+            this.Properties = new List<CustomPropertyInfo>();
+            if (this.Model.Count() > 0)
+            {
+                SetProperties(this.Model.First().GetType().GetProperties());
+            }
+
+            if (!string.IsNullOrEmpty(this.OrderBy))
+            {
+                this.Properties.SetSorting(this.OrderBy, this.SortOrder);
+                if (this.SortOrder == GridSortOrder.ASC)
+                {
+                    this.Model = this.Model.OrderBy(x => x.GetType().GetProperty(this.OrderBy).GetValue(x, null));
+                }
+                else
+                {
+                    this.Model = this.Model.OrderByDescending(x => x.GetType().GetProperty(this.OrderBy).GetValue(x, null));
+                }
+            }
+
+            SetRows(this.Model);
+
+            if (this.EditAction != null)
+            {
+                foreach (var row in this.Rows)
+                {
+                    row.PrimaryKeyName = this.PrimaryKeyName;
+                    row.EditActionAsync = this.EditAction;
+                }
+            }
+
+            this.GridModel = new GridModel()
+            {
+                AddAction = this.AddAction,
+                BackAction = this.BackAction,
+                ListAction = this.ListAction,
+                Properties = this.Properties,
+                Rows = this.Rows,
+                Title = this.Title
+            };
         }
         #endregion
 
         #region SetProperties()
         private void SetProperties(PropertyInfo[] properties)
         {
+            this.Properties = new List<CustomPropertyInfo>();
+
             foreach (var prop in properties)
             {
                 var customProperty = new CustomPropertyInfo()
@@ -97,6 +137,8 @@ namespace JanuszMarcinik.Mvc.Domain.DataSource
         #region SetRows()
         private void SetRows(IEnumerable<TModel> data)
         {
+            this.Rows = new List<GridRow>();
+
             foreach (var item in data)
             {
                 var row = new GridRow();
@@ -133,28 +175,17 @@ namespace JanuszMarcinik.Mvc.Domain.DataSource
         }
         #endregion
 
-        #region SetEditActions()
-        protected void SetEditActions(Task<ActionResult> editAction, string primaryKeyName = "id")
-        {
-            foreach (var row in this.Rows)
-            {
-                row.PrimaryKeyName = primaryKeyName;
-                row.EditActionAsync = editAction;
-            }
-        }
-        #endregion
-
         #region GetGridModel()
         public GridModel GetGridModel()
         {
-            return new GridModel()
+            if (this.GridModel == null)
             {
-                AddAction = this.AddAction,
-                BackAction = this.BackAction,
-                Properties = this.Properties,
-                Rows = this.Rows,
-                Title = this.Title
-            };
+                throw new Exception("Grid model was not initialized. Run Initialize() method after DataSource invoked.");
+            }
+            else
+            {
+                return this.GridModel;
+            }
         }
         #endregion
     }

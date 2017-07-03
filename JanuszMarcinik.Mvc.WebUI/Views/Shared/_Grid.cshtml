@@ -1,4 +1,5 @@
-﻿@model JanuszMarcinik.Mvc.Domain.DataSource.Grid.GridModel
+﻿@using JanuszMarcinik.Mvc.Domain.DataSource.Grid
+@model JanuszMarcinik.Mvc.Domain.DataSource.Grid.GridModel
 
 @{
     ViewBag.Title = Model.Title;
@@ -20,7 +21,35 @@
                     {
                         if (!string.IsNullOrEmpty(prop.DisplayName))
                         {
-                            <th class="text-center">@prop.DisplayName</th>
+                            if (Model.ListAction == null)
+                            {
+                                <th class="text-center">
+                                    @prop.DisplayName
+                                </th>
+                            }
+                            else
+                            {
+                                if (prop.IsOrderByAsc)
+                                {
+                                    <th class="text-center clicable-action text-primary" data-href="@Url.Action(Model.ListAction.AddRouteValue("orderBy", prop.PropertyName).AddRouteValue("sortOrder", GridSortOrder.DESC))">
+                                        <i class="fa fa-sort-asc" aria-hidden="true"></i>
+                                        @prop.DisplayName
+                                    </th>
+                                }
+                                else if (prop.IsOrderByDesc)
+                                {
+                                    <th class="text-center clicable-action text-primary" data-href="@Url.Action(Model.ListAction.AddRouteValue("orderBy", prop.PropertyName).AddRouteValue("sortOrder", GridSortOrder.ASC))">
+                                        <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                        @prop.DisplayName
+                                    </th>
+                                }
+                                else
+                                {
+                                    <th class="text-center clicable-action text-primary" data-href="@Url.Action(Model.ListAction.AddRouteValue("orderBy", prop.PropertyName).AddRouteValue("sortOrder", GridSortOrder.ASC))">
+                                        @prop.DisplayName
+                                    </th>
+                                }
+                            }
                         }
                     }
                 </tr>
@@ -28,7 +57,7 @@
             <tbody class="text-center">
                 @foreach (var row in Model.Rows)
                 {
-                    <tr class="edit-item-row" data-href="@Url.Action(row.EditActionAsync.AddRouteValue(row.PrimaryKeyName, row.PrimaryKeyId))">
+                    <tr class="clicable-action" data-href="@Url.Action(row.EditActionAsync.AddRouteValue(row.PrimaryKeyName, row.PrimaryKeyId))">
                         <td>@(Model.Rows.IndexOf(row) + 1)</td>
                         @foreach (var item in row.Values)
                         {
@@ -51,7 +80,7 @@
 
 <script type="text/javascript">
 
-    $(".edit-item-row").click(function () {
+    $(".clicable-action").click(function () {
         window.location = $(this).data("href");
     });
 
@@ -59,7 +88,7 @@
 
 <style>
 
-    .edit-item-row {
+    .clicable-action {
         cursor: pointer;
     }
 

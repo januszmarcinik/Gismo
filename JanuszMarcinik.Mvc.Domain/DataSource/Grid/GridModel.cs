@@ -10,5 +10,6 @@ namespace JanuszMarcinik.Mvc.Domain.DataSource.Grid
         public List<GridRow> Rows { get; set; }
         public ActionResult AddAction { get; set; }
         public ActionResult BackAction { get; set; }
+        public ActionResult ListAction { get; set; }
     }
 }

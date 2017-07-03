@@ -101,6 +101,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
         }
 
 
+        static readonly ActionParamsClass_List s_params_List = new ActionParamsClass_List();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_List ListParams { get { return s_params_List; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_List
+        {
+            public readonly string orderBy = "orderBy";
+            public readonly string sortOrder = "sortOrder";
+        }
         static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
@@ -149,13 +158,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
         public T4MVC_ExampleParentsController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string orderBy, JanuszMarcinik.Mvc.Domain.DataSource.Grid.GridSortOrder sortOrder);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult List()
+        public override System.Web.Mvc.ActionResult List(string orderBy, JanuszMarcinik.Mvc.Domain.DataSource.Grid.GridSortOrder sortOrder)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
-            ListOverride(callInfo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "orderBy", orderBy);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "sortOrder", sortOrder);
+            ListOverride(callInfo, orderBy, sortOrder);
             return callInfo;
         }
 
