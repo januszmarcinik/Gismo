@@ -23,12 +23,12 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
 {
-    public partial class UsersController
+    public partial class ExampleChildrensController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected UsersController(Dummy d) { }
+        protected ExampleChildrensController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -58,6 +58,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult List()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult Create()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit()
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
@@ -69,21 +81,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult DeleteConfirmed()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public UsersController Actions { get { return MVC.Account.Users; } }
+        public ExampleChildrensController Actions { get { return MVC.Example.ExampleChildrens; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Account";
+        public readonly string Area = "Example";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Users";
+        public readonly string Name = "ExampleChildrens";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Users";
+        public const string NameConst = "ExampleChildrens";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -91,24 +97,39 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = "Index";
             public readonly string List = "List";
+            public readonly string Create = "Create";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
-            public readonly string DeleteConfirmed = "Delete";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Index = "Index";
             public const string List = "List";
+            public const string Create = "Create";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
-            public const string DeleteConfirmed = "Delete";
         }
 
 
+        static readonly ActionParamsClass_List s_params_List = new ActionParamsClass_List();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_List ListParams { get { return s_params_List; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_List
+        {
+            public readonly string parentId = "parentId";
+        }
+        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Create
+        {
+            public readonly string parentId = "parentId";
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
@@ -125,13 +146,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         public class ActionParamsClass_Delete
         {
             public readonly string id = "id";
-        }
-        static readonly ActionParamsClass_DeleteConfirmed s_params_DeleteConfirmed = new ActionParamsClass_DeleteConfirmed();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_DeleteConfirmed DeleteConfirmedParams { get { return s_params_DeleteConfirmed; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_DeleteConfirmed
-        {
+            public readonly string exampleParentId = "exampleParentId";
             public readonly string model = "model";
         }
         static readonly ViewsClass s_views = new ViewsClass();
@@ -145,38 +160,50 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Edit = "Edit";
-                public readonly string Index = "Index";
             }
-            public readonly string Edit = "~/Areas/Account/Views/Users/Edit.cshtml";
-            public readonly string Index = "~/Areas/Account/Views/Users/Index.cshtml";
+            public readonly string Edit = "~/Areas/Example/Views/ExampleChildrens/Edit.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_UsersController : JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.UsersController
+    public partial class T4MVC_ExampleChildrensController : JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.ExampleChildrensController
     {
-        public T4MVC_UsersController() : base(Dummy.Instance) { }
+        public T4MVC_ExampleChildrensController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int parentId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index()
+        public override System.Web.Mvc.ActionResult List(int parentId)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
+            ListOverride(callInfo, parentId);
             return callInfo;
         }
 
         [NonAction]
-        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int parentId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult List()
+        public override System.Web.Mvc.ActionResult Create(int parentId)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
-            ListOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "parentId", parentId);
+            CreateOverride(callInfo, parentId);
             return callInfo;
+        }
+
+        [NonAction]
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens.ExampleChildViewModel model);
+
+        [NonAction]
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Create(JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens.ExampleChildViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            CreateOverride(callInfo, model);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
@@ -192,39 +219,40 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens.ExampleChildViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit(JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens.ExampleChildViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             EditOverride(callInfo, model);
-            return callInfo;
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
         [NonAction]
-        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, int exampleParentId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Delete(int id)
+        public override System.Web.Mvc.ActionResult Delete(int id, int exampleParentId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DeleteOverride(callInfo, id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "exampleParentId", exampleParentId);
+            DeleteOverride(callInfo, id, exampleParentId);
             return callInfo;
         }
 
         [NonAction]
-        partial void DeleteConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model);
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Models.DeleteConfirmViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult DeleteConfirmed(JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Delete(JanuszMarcinik.Mvc.WebUI.Models.DeleteConfirmViewModel model)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            DeleteConfirmedOverride(callInfo, model);
-            return callInfo;
+            DeleteOverride(callInfo, model);
+            return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
         }
 
     }

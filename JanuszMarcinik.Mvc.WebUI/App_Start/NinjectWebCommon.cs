@@ -67,6 +67,7 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
             kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
 
             kernel.Bind<IExampleParentsRepository>().To<ExampleParentsRepository>().InSingletonScope();
+            kernel.Bind<IExampleChildrensRepository>().To<ExampleChildrensRepository>().InSingletonScope();
         }        
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
@@ -25,10 +26,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #region List()
         public virtual ActionResult List()
         {
-            var roles = _roleManager.Roles;
             var model = new RoleDataSource();
-            model.Roles = Mapper.Map<List<RoleViewModel>>(roles);
-            model.SetActions();
+            model.Initialize(Mapper.Map<List<RoleViewModel>>(_roleManager.Roles));
 
             return View(MVC.Shared.Views._Grid, model.GetGridModel());
         }
@@ -56,7 +55,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #endregion
 
         #region Edit
-        public virtual ActionResult Edit(int id)
+        public virtual async Task<ActionResult> Edit(int id)
         {
             var role = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
             var model = Mapper.Map<RoleViewModel>(role);

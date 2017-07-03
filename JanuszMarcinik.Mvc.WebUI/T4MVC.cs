@@ -27,8 +27,6 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
-    static readonly AccountClass s_Account = new AccountClass();
-    public static AccountClass Account { get { return s_Account; } }
     static readonly ExampleClass s_Example = new ExampleClass();
     public static ExampleClass Example { get { return s_Example; } }
     static readonly HomeClass s_Home = new HomeClass();
@@ -39,20 +37,9 @@ public static partial class MVC
 namespace T4MVC
 {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class AccountClass
-    {
-        public readonly string Name = "Account";
-        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.AccountController Account = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_AccountController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.ManageController Manage = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_ManageController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.RolesController Roles = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_RolesController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.UsersController Users = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_UsersController();
-        public T4MVC.Account.SharedController Shared = new T4MVC.Account.SharedController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ExampleClass
     {
         public readonly string Name = "Example";
-        public JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.ExampleChildrensController ExampleChildrens = new JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.T4MVC_ExampleChildrensController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.ExampleParentsController ExampleParents = new JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.T4MVC_ExampleParentsController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -63,6 +50,7 @@ namespace T4MVC
     }
 }
 
+#pragma warning disable 0436
 namespace T4MVC
 {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -72,6 +60,7 @@ namespace T4MVC
         public static Dummy Instance = new Dummy();
     }
 }
+#pragma warning restore 0436
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
@@ -82,19 +71,6 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
     }
      
     public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
-    
-    public string Controller { get; set; }
-    public string Action { get; set; }
-    public string Protocol { get; set; }
-    public RouteValueDictionary RouteValueDictionary { get; set; }
-}
-[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-internal partial class T4MVC_System_Web_Mvc_PartialViewResult : System.Web.Mvc.PartialViewResult, IT4MVCActionResult
-{
-    public T4MVC_System_Web_Mvc_PartialViewResult(string area, string controller, string action, string protocol = null): base()
-    {
-        this.InitMVCT4Result(area, controller, action, protocol);
-    }
     
     public string Controller { get; set; }
     public string Action { get; set; }

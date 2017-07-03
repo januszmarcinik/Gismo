@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace T4MVC.Example
+namespace T4MVC
 {
     public class SharedController
     {
@@ -38,7 +38,11 @@ namespace T4MVC.Example
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _Grid = "_Grid";
+                public readonly string _Layout = "_Layout";
             }
+            public readonly string _Grid = "~/Views/Shared/_Grid.cshtml";
+            public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
         }
     }
 

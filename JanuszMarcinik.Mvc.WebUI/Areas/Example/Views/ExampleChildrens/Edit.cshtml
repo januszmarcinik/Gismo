@@ -1,8 +1,8 @@
-﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentViewModel
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens.ExampleChildViewModel
 
 @if (Model.Id == 0)
 {
-    ViewBag.Title = "Nowy parent";
+    ViewBag.Title = "Nowy child";
 
     <h2 class="center-block">
         <span class="label label-success center-block">@ViewBag.Title</span>
@@ -10,7 +10,7 @@
 }
 else
 {
-    ViewBag.Title = "Edytuj parenta";
+    ViewBag.Title = "Edytuj childa";
 
     <h2 class="center-block">
         <span class="label label-warning center-block">@ViewBag.Title</span>
@@ -25,11 +25,11 @@ else
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.ParentId)
 
             <div class="row">
                 <div class="col-sm-6">
-                    @form.FormGroup().TextBoxFor(x => x.Text)
-                    @form.FormGroup().TextAreaFor(x => x.LongText)
+                    @form.FormGroup().TextBoxFor(x => x.Name)
                 </div>
             </div>
         }
@@ -38,8 +38,7 @@ else
         {
             <div class="btn-group">
                 @Html.Bootstrap().SubmitSaveButton()
-                @Html.Bootstrap().ListButton("Example childrens", MVC.Example.ExampleChildrens.List(Model.Id))
-                @Html.Bootstrap().BackButton(MVC.Example.ExampleParents.List())
+                @Html.Bootstrap().BackButton(MVC.Example.ExampleChildrens.List(Model.ParentId))
             </div>
 
             <div class="btn-group pull-right">
@@ -49,4 +48,4 @@ else
     }
 }
 
-@Html.Action(MVC.Example.ExampleParents.Delete(Model.Id))
+@Html.Action(MVC.Example.ExampleChildrens.Delete(Model.Id, Model.ParentId))

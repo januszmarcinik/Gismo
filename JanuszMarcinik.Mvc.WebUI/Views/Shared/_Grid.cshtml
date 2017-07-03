@@ -1,4 +1,4 @@
-﻿@model JanuszMarcinik.Mvc.Domain.Application.DataSource.GridModel
+﻿@model JanuszMarcinik.Mvc.Domain.DataSource.Grid.GridModel
 
 @{
     ViewBag.Title = Model.Title;
@@ -12,49 +12,28 @@
 {
     using (panel.BeginBody())
     {
-        <table class="table table-hover table-bordered table-condensed">
+        <table class="table table-hover table-bordered">
             <thead>
                 <tr class="active">
                     <th class="text-center">L/p</th>
-                    @foreach (var prop in Model.Properties)
+                    @foreach (var prop in Model.Properties.Where(x => x.PropertyName != "Id"))
                     {
                         if (!string.IsNullOrEmpty(prop.DisplayName))
                         {
                             <th class="text-center">@prop.DisplayName</th>
                         }
                     }
-                    <th></th>
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach (var row in Model.Data)
+                @foreach (var row in Model.Rows)
                 {
-                    <tr>
-                        <td>@(Model.Data.IndexOf(row) + 1)</td>
+                    <tr class="edit-item-row" data-href="@Url.Action(row.EditActionAsync.AddRouteValue(row.PrimaryKeyName, row.PrimaryKeyId))">
+                        <td>@(Model.Rows.IndexOf(row) + 1)</td>
                         @foreach (var item in row.Values)
                         {
-                            if (item == Model.IsImage)
-                            {
-                                <td>
-                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(row.GetImageAction)" />
-                                </td>
-                            }
-                            else
-                            {
-                                <td>@item</td>
-                            }
+                            <td>@item</td>
                         }
-
-                        <td>
-                            <div class="btn-group">
-                                @if (!string.IsNullOrEmpty(row.ListText))
-                                {
-                                    @Html.Bootstrap().ListButton(row.ListText, row.ListAction)
-                                }
-                                @Html.Bootstrap().EditButton(row.EditAction)
-                                @Html.Bootstrap().DeleteButton(row.DeleteAction)
-                            </div>
-                        </td>
                     </tr>
                 }
             </tbody>
@@ -69,3 +48,19 @@
         </div>
     }
 }
+
+<script type="text/javascript">
+
+    $(".edit-item-row").click(function () {
+        window.location = $(this).data("href");
+    });
+
+</script>
+
+<style>
+
+    .edit-item-row {
+        cursor: pointer;
+    }
+
+</style>

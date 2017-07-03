@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -49,17 +50,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #region List()
         public virtual ActionResult List()
         {
-            var users = UserManager.Users;
             var model = new UserDataSource();
-            model.Users = Mapper.Map<List<UserViewModel>>(users);
-            model.SetActions();
+            model.Initialize(Mapper.Map<List<UserViewModel>>(UserManager.Users));
 
             return View(MVC.Shared.Views._Grid, model.GetGridModel());
         }
         #endregion
 
         #region Edit
-        public virtual ActionResult Edit(int id)
+        public virtual async Task<ActionResult> Edit(int id)
         {
             var user = UserManager.Users.FirstOrDefault(x => x.Id == id);
             var model = Mapper.Map<UserViewModel>(user);

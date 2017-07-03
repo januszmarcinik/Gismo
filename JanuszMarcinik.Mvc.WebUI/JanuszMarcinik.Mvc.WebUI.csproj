@@ -243,10 +243,9 @@
     <Content Include="Areas\Account\Views\Roles\Delete.cshtml" />
     <Content Include="Areas\Account\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Example\Views\web.config" />
-    <Content Include="Areas\Example\Views\ExampleParents\Create.cshtml" />
-    <Content Include="Areas\Example\Views\ExampleParents\Delete.cshtml" />
-    <Content Include="Areas\Example\Views\ExampleParents\Edit.cshtml" />
     <Content Include="Areas\Example\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Example\Views\ExampleParents\Edit.cshtml" />
+    <Content Include="Areas\Example\Views\ExampleChildrens\Edit.cshtml" />
     <None Include="Assets\js\jquery-3.1.1.intellisense.js" />
     <Content Include="App_Data\Images\bo_play_pattern.png" />
     <Content Include="App_Data\Images\Leagues\bundesliga.png" />
@@ -307,15 +306,16 @@
     <Compile Include="Areas\Account\Models\Roles\RoleViewModel.cs" />
     <Compile Include="Areas\Account\Models\Users\UserDataSource.cs" />
     <Compile Include="Areas\Account\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Example\Controllers\ExampleChildrensController.cs" />
     <Compile Include="Areas\Example\Controllers\ExampleParentsController.cs" />
     <Compile Include="Areas\Example\ExampleAreaRegistration.cs" />
     <Compile Include="Areas\Example\ExampleProfile.cs" />
+    <Compile Include="Areas\Example\Models\ExampleChildrens\ExampleChildDataSource.cs" />
+    <Compile Include="Areas\Example\Models\ExampleChildrens\ExampleChildViewModel.cs" />
     <Compile Include="Areas\Example\Models\ExampleParents\ExampleParentDataSource.cs" />
     <Compile Include="Areas\Example\Models\ExampleParents\ExampleParentViewModel.cs" />
+    <Compile Include="Models\DeleteConfirmViewModel.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Account.ImageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Account.ManageController.generated.cs">
@@ -339,16 +339,16 @@
     <Compile Include="T4MVC\Account.UsersController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Example.SharedController.generated.cs">
+    <Compile Include="T4MVC\Example.ExampleChildrensController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Example.ExampleParentsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Home.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="T4MVC\Home.ManageController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -371,6 +371,7 @@
     <None Include="T4MVC\T4MVC.tt.hooks.t4" />
     <Content Include="Areas\Account\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Shared\_DeleteConfirm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

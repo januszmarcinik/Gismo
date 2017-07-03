@@ -1,32 +1,19 @@
-﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
-using JanuszMarcinik.Mvc.Extensions.SiteMap;
-using System;
+﻿using JanuszMarcinik.Mvc.Domain.DataSource;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
 {
     public class ExampleParentDataSource : DataSource<ExampleParentViewModel>
     {
-        public ExampleParentDataSource() : base(new ExampleParentViewModel()) { }
-
-        public List<ExampleParentViewModel> ExampleParents { get; set; }
-
-        public override void SetActions()
+        public override void Initialize(IEnumerable<ExampleParentViewModel> model)
         {
-            base.PrepareData(this.ExampleParents);
+            base.Initialize(model);
 
-            foreach (var row in this.Data)
-            {
-                row.EditAction = MVC.Account.Roles.Edit(row.PrimaryKeyId);
-                row.DeleteAction = MVC.Account.Roles.Delete(row.PrimaryKeyId);
-            }
+            this.AddAction = MVC.Example.ExampleParents.Create();
+            this.BackAction = MVC.Example.ExampleParents.List();
+            this.SetEditActions(MVC.Example.ExampleParents.Edit());
 
-            this.AddAction = MVC.Account.Roles.Create();
-            this.BackAction = MVC.Account.Users.Index();
-            this.Title = "Role użytkowników";
+            this.Title = "Parents";
         }
     }
 }

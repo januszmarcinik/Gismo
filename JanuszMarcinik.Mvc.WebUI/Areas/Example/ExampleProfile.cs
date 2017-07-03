@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Models.Examples;
+using JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens;
 using JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example
 {
@@ -21,6 +18,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example
         public ExampleProfile()
         {
             CreateMap<ExampleParent, ExampleParentViewModel>();
+            CreateMap<ExampleChild, ExampleChildViewModel>();
         }
         #endregion
     }

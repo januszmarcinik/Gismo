@@ -1,4 +1,4 @@
-﻿using JanuszMarcinik.Mvc.Extensions.SiteMap;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using TwitterBootstrap3;
 using TwitterBootstrapMVC.BootstrapMethods;
@@ -15,17 +15,36 @@ namespace JanuszMarcinik.Mvc.Extensions.Helpers
 
         public static BootstrapActionLinkButton ListButton<TModel>(this BootstrapBase<TModel> bootstrap, string linkText, ActionResult result) where TModel : class
         {
-            return bootstrap.ActionLinkButton("", result).Title(linkText).PrependIcon(FontAwesome.list);
+            return bootstrap.ActionLinkButton("", result).Text(linkText).PrependIcon(FontAwesome.list).Style(ButtonStyle.Info);
+        }
+
+        #region EditButton()
+        public static BootstrapActionLinkButton EditButton<TModel>(this BootstrapBase<TModel> bootstrap, Task<ActionResult> result) where TModel : class
+        {
+            return bootstrap.ActionLinkButton("", result).Title("Edytuj").Style(ButtonStyle.Warning).PrependIcon(FontAwesome.pencil);
         }
 
         public static BootstrapActionLinkButton EditButton<TModel>(this BootstrapBase<TModel> bootstrap, ActionResult result) where TModel : class
         {
             return bootstrap.ActionLinkButton("", result).Title("Edytuj").Style(ButtonStyle.Warning).PrependIcon(FontAwesome.pencil);
         }
+        #endregion
+
+        #region DeleteButton
+        public static BootstrapActionLinkButton DeleteButton<TModel>(this BootstrapBase<TModel> bootstrap, Task<ActionResult> result) where TModel : class
+        {
+            return bootstrap.ActionLinkButton("", result).Title("Usuń").Style(ButtonStyle.Danger).PrependIcon(FontAwesome.remove);
+        }
 
         public static BootstrapActionLinkButton DeleteButton<TModel>(this BootstrapBase<TModel> bootstrap, ActionResult result) where TModel : class
         {
             return bootstrap.ActionLinkButton("", result).Title("Usuń").Style(ButtonStyle.Danger).PrependIcon(FontAwesome.remove);
+        }
+        #endregion
+
+        public static BootstrapButton<TModel> ConfirmDeleteButton<TModel>(this BootstrapBase<TModel> bootstrap) where TModel : class
+        {
+            return bootstrap.Button().Style(ButtonStyle.Danger).PrependIcon(FontAwesome.remove).Text("Usuń").TriggerModal("deleteConfirm");
         }
 
         public static BootstrapActionLinkButton BackButton<TModel>(this BootstrapBase<TModel> bootstrap, ActionResult result) where TModel : class
@@ -41,11 +60,6 @@ namespace JanuszMarcinik.Mvc.Extensions.Helpers
         public static BootstrapButton<TModel> SubmitDeleteButton<TModel>(this BootstrapBase<TModel> bootstrap) where TModel : class
         {
             return bootstrap.SubmitButton().Text("Usuń").PrependIcon(FontAwesome.remove).Style(ButtonStyle.Danger);
-        }
-
-        public static BootstrapActionLinkButton ActionLinkButton<TModel>(this BootstrapBase<TModel> bootstrap, string text, SiteMapAction siteMapAction) where TModel : class
-        {
-            return bootstrap.ActionLinkButton(text, siteMapAction.Action, siteMapAction.Controller).RouteValues(siteMapAction.RouteValues).PrependIcon(FontAwesome.android);
         }
     }
 }

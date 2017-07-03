@@ -38,9 +38,11 @@ namespace T4MVC
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _DeleteConfirm = "_DeleteConfirm";
                 public readonly string _Grid = "_Grid";
                 public readonly string _Layout = "_Layout";
             }
+            public readonly string _DeleteConfirm = "~/Views/Shared/_DeleteConfirm.cshtml";
             public readonly string _Grid = "~/Views/Shared/_Grid.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
         }
