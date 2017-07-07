@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Models.Examples;
 using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract;
+using JanuszMarcinik.Mvc.WebUI.Areas.Default.Models;
 using JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens;
-using JanuszMarcinik.Mvc.WebUI.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -96,7 +96,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
                 ConfirmationText = "Czy na pewno usunąć childa?"
             };
 
-            return PartialView(MVC.Shared.Views._DeleteConfirm, model);
+            return PartialView(MVC.Default.Shared.Views._DeleteConfirm, model);
         }
 
         [HttpPost]

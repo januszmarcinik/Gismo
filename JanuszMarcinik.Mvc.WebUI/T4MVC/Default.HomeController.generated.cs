@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers
 {
     public partial class HomeController
     {
@@ -61,9 +61,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers
 
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController Actions { get { return MVC.Home.Home; } }
+        public HomeController Actions { get { return MVC.Default.Home; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Home";
+        public readonly string Area = "Default";
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Name = "Home";
         [GeneratedCode("T4MVC", "2.0")]
@@ -97,12 +97,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers
             {
                 public readonly string Index = "Index";
             }
-            public readonly string Index = "~/Areas/Home/Views/Home/Index.cshtml";
+            public readonly string Index = "~/Areas/Default/Views/Home/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_HomeController : JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers.HomeController
+    public partial class T4MVC_HomeController : JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers.HomeController
     {
         public T4MVC_HomeController() : base(Dummy.Instance) { }
 

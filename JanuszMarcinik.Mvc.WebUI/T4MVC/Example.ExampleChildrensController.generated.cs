@@ -244,10 +244,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
         }
 
         [NonAction]
-        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Models.DeleteConfirmViewModel model);
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Default.Models.DeleteConfirmViewModel model);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Delete(JanuszMarcinik.Mvc.WebUI.Models.DeleteConfirmViewModel model)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Delete(JanuszMarcinik.Mvc.WebUI.Areas.Default.Models.DeleteConfirmViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);

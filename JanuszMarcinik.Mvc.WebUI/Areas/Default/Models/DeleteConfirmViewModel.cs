@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace JanuszMarcinik.Mvc.WebUI.Models
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Default.Models
 {
     public class DeleteConfirmViewModel
     {

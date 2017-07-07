@@ -29,10 +29,10 @@ public static partial class MVC
 {
     static readonly AccountClass s_Account = new AccountClass();
     public static AccountClass Account { get { return s_Account; } }
+    static readonly DefaultClass s_Default = new DefaultClass();
+    public static DefaultClass Default { get { return s_Default; } }
     static readonly ExampleClass s_Example = new ExampleClass();
     public static ExampleClass Example { get { return s_Example; } }
-    static readonly HomeClass s_Home = new HomeClass();
-    public static HomeClass Home { get { return s_Home; } }
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -49,17 +49,18 @@ namespace T4MVC
         public T4MVC.Account.SharedController Shared = new T4MVC.Account.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class DefaultClass
+    {
+        public readonly string Name = "Default";
+        public JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers.HomeController Home = new JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers.T4MVC_HomeController();
+        public T4MVC.Default.SharedController Shared = new T4MVC.Default.SharedController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ExampleClass
     {
         public readonly string Name = "Example";
         public JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.ExampleChildrensController ExampleChildrens = new JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.T4MVC_ExampleChildrensController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.ExampleParentsController ExampleParents = new JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers.T4MVC_ExampleParentsController();
-    }
-    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class HomeClass
-    {
-        public readonly string Name = "Home";
-        public JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers.HomeController Home = new JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers.T4MVC_HomeController();
     }
 }
 

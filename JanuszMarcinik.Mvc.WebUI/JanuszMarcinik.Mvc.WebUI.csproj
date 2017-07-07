@@ -198,11 +198,7 @@
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Home\Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\Home\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Home\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Default\Views\Home\Index.cshtml" />
     <Content Include="Areas\Account\Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Areas\Account\Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Areas\Account\Views\Account\ExternalLoginFailure.cshtml" />
@@ -246,6 +242,8 @@
     <Content Include="Areas\Example\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Example\Views\ExampleParents\Edit.cshtml" />
     <Content Include="Areas\Example\Views\ExampleChildrens\Edit.cshtml" />
+    <Content Include="Areas\Default\Views\web.config" />
+    <Content Include="Areas\Default\Views\_ViewStart.cshtml" />
     <None Include="Assets\js\jquery-3.1.1.intellisense.js" />
     <Content Include="App_Data\Images\bo_play_pattern.png" />
     <Content Include="App_Data\Images\Leagues\bundesliga.png" />
@@ -306,6 +304,9 @@
     <Compile Include="Areas\Account\Models\Roles\RoleViewModel.cs" />
     <Compile Include="Areas\Account\Models\Users\UserDataSource.cs" />
     <Compile Include="Areas\Account\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Default\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Default\DefaultAreaRegistration.cs" />
+    <Compile Include="Areas\Default\Models\DeleteConfirmViewModel.cs" />
     <Compile Include="Areas\Example\Controllers\ExampleChildrensController.cs" />
     <Compile Include="Areas\Example\Controllers\ExampleParentsController.cs" />
     <Compile Include="Areas\Example\ExampleAreaRegistration.cs" />
@@ -314,7 +315,6 @@
     <Compile Include="Areas\Example\Models\ExampleChildrens\ExampleChildViewModel.cs" />
     <Compile Include="Areas\Example\Models\ExampleParents\ExampleParentDataSource.cs" />
     <Compile Include="Areas\Example\Models\ExampleParents\ExampleParentViewModel.cs" />
-    <Compile Include="Models\DeleteConfirmViewModel.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -331,21 +331,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
     <Compile Include="Areas\Account\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Home\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Account.UsersController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="T4MVC\Default.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Default.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC\Example.ExampleChildrensController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Example.ExampleParentsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Home.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -371,7 +372,7 @@
     <None Include="T4MVC\T4MVC.tt.hooks.t4" />
     <Content Include="Areas\Account\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
-    <Content Include="Views\Shared\_DeleteConfirm.cshtml" />
+    <Content Include="Areas\Default\Views\Shared\_DeleteConfirm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -379,9 +380,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Home\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\JanuszMarcinik.Mvc.Domain\JanuszMarcinik.Mvc.Domain.csproj">
       <Project>{dd1a95ee-18f7-486d-a821-10b8ce043634}</Project>

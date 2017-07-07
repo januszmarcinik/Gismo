@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace JanuszMarcinik.Mvc.WebUI.Areas.Home
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Default
 {
-    public class HomeAreaRegistration : AreaRegistration 
+    public class DefaultAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Home";
+                return "Default";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Home_default",
-                "Home/{controller}/{action}/{id}",
+                "Default_default",
+                "Default/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
