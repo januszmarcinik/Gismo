@@ -122,16 +122,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSource\Grid\GridAttribute.cs" />
-    <Compile Include="DataSource\CustomPropertyInfo.cs" />
-    <Compile Include="DataSource\DataSource.cs" />
-    <Compile Include="DataSource\Grid\GridModel.cs" />
-    <Compile Include="DataSource\Grid\GridRow.cs" />
-    <Compile Include="DataSource\Grid\GridSortOrder.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\DbSchemas.cs" />
     <Compile Include="Data\Entity.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Examples\ExampleChild.cs" />
     <Compile Include="Models\Examples\ExampleParent.cs" />
@@ -165,6 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JanuszMarcinik.Mvc\JanuszMarcinik.Mvc.csproj">
+      <Project>{bbd7ee3c-7bb8-4a4a-8886-75a6399b34b6}</Project>
+      <Name>JanuszMarcinik.Mvc</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

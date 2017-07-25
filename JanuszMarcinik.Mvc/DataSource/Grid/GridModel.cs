@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace JanuszMarcinik.Mvc.Domain.DataSource.Grid
+namespace JanuszMarcinik.Mvc.DataSource
 {
     public class GridModel
     {

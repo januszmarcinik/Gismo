@@ -153,7 +153,6 @@
     </Reference>
     <Reference Include="TwitterBootstrapMVC5, Version=3.17.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TwitterBootstrapMVC5.3.17.5\lib\net40\TwitterBootstrapMVC5.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
@@ -272,6 +271,7 @@
     </None>
     <None Include="T4MVC\T4MVC.tt.settings.xml" />
     <Content Include="Assets\js\TwitterBootstrapMvcJs.js" />
+    <Content Include="Scripts\TwitterBootstrapMvcJs.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -373,6 +373,7 @@
     <Content Include="Areas\Account\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Areas\Default\Views\Shared\_DeleteConfirm.cshtml" />
+    <Content Include="Views\Shared\_PageNotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -386,9 +387,9 @@
       <Project>{dd1a95ee-18f7-486d-a821-10b8ce043634}</Project>
       <Name>JanuszMarcinik.Mvc.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JanuszMarcinik.Mvc.Extensions\JanuszMarcinik.Mvc.Extensions.csproj">
-      <Project>{7554da69-2b19-4cf0-b46b-09742fb7f2ea}</Project>
-      <Name>JanuszMarcinik.Mvc.Extensions</Name>
+    <ProjectReference Include="..\JanuszMarcinik.Mvc\JanuszMarcinik.Mvc.csproj">
+      <Project>{bbd7ee3c-7bb8-4a4a-8886-75a6399b34b6}</Project>
+      <Name>JanuszMarcinik.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

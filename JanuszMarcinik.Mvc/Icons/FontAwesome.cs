@@ -1,4 +1,4 @@
-﻿namespace JanuszMarcinik.Mvc.Extensions.Helpers
+﻿namespace JanuszMarcinik.Mvc
 {
     public static class FontAwesome
     {

@@ -2,9 +2,9 @@
 using System.ComponentModel;
 using System.Linq;
 
-namespace JanuszMarcinik.Mvc.Domain
+namespace JanuszMarcinik.Mvc
 {
-    public static class EnumExtensions
+    public static class EnumHelpers
     {
         public static string GetDescription(this Enum e)
         {

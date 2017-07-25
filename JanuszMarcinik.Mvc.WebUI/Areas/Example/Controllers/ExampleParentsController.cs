@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using JanuszMarcinik.Mvc.Domain.DataSource.Grid;
+using JanuszMarcinik.Mvc.DataSource;
 using JanuszMarcinik.Mvc.Domain.Models.Examples;
 using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Default.Models;
@@ -19,14 +19,21 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
             this._exampleParentsRepository = exampleParentsRepository;
         }
 
+        #region Index()
+        public virtual ActionResult Index()
+        {
+            return RedirectToAction(MVC.Example.ExampleParents.List());
+        }
+        #endregion
+
         #region List()
-        public virtual ActionResult List(string orderBy = null, GridSortOrder sortOrder = GridSortOrder.ASC)
+        public virtual ActionResult List()
         {
             var datasource = new ExampleParentDataSource()
             {
                 Model = Mapper.Map<List<ExampleParentViewModel>>(_exampleParentsRepository.ExampleParents),
-                OrderBy = orderBy,
-                SortOrder = sortOrder
+                OrderBy = null,
+                SortOrder = GridSortOrder.ASC
             };
             datasource.Initialize();
 

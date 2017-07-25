@@ -8,5 +8,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers
         {
             return View(MVC.Default.Home.Views.Index);
         }
+
+        public virtual ActionResult PageNotFound()
+        {
+            return View(MVC.Shared.Views._PageNotFound);
+        }
     }
 }

@@ -107,10 +107,25 @@ internal partial class T4MVC_System_Web_Mvc_PartialViewResult : System.Web.Mvc.P
 
 namespace Links
 {
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public static class Scripts {
+        public const string UrlPath = "~/Scripts";
+        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+        public static readonly string TwitterBootstrapMvcJs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/TwitterBootstrapMvcJs.min.js") ? Url("TwitterBootstrapMvcJs.min.js") : Url("TwitterBootstrapMvcJs.js");
+    }
+
     
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public static partial class Bundles
     {
+        public static partial class Scripts 
+        {
+            public static class Assets
+            {
+                public const string TwitterBootstrapMvcJs_js = "~/Scripts/TwitterBootstrapMvcJs.js"; 
+            }
+        }
     }
 }
 

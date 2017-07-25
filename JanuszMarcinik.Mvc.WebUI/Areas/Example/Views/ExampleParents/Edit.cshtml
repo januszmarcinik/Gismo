@@ -1,21 +1,14 @@
-﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentViewModel
+﻿@using JanuszMarcinik.Mvc.JMap
+@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentViewModel
 
-@if (Model.Id == 0)
-{
-    ViewBag.Title = "Nowy parent";
-
-    <h2 class="center-block">
-        <span class="label label-success center-block">@ViewBag.Title</span>
-    </h2>
+@{ 
+    ViewBag.Title = JMap.Example.ExampleParents.Edit(Model.Id).Title;
 }
-else
-{
-    ViewBag.Title = "Edytuj parenta";
 
-    <h2 class="center-block">
-        <span class="label label-warning center-block">@ViewBag.Title</span>
-    </h2>
-}
+@Html.Breadcrumbs(Url,
+    JMap.Default.Home.Index(),
+    JMap.Example.ExampleParents.List(),
+    JMap.Example.ExampleParents.Edit(Model.Id))
 
 @using (var form = Html.Bootstrap().Begin(new Form()))
 {

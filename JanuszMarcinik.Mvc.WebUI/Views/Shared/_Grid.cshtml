@@ -1,13 +1,9 @@
-﻿@using JanuszMarcinik.Mvc.Domain.DataSource.Grid
-@model JanuszMarcinik.Mvc.Domain.DataSource.Grid.GridModel
+﻿@using JanuszMarcinik.Mvc.DataSource
+@model GridModel
 
 @{
     ViewBag.Title = Model.Title;
 }
-
-<h2 class="center-block">
-    <span class="label label-primary center-block">@ViewBag.Title</span>
-</h2>
 
 @using (var panel = Html.Bootstrap().Begin(new Panel()))
 {

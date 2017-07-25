@@ -1,4 +1,4 @@
-﻿namespace JanuszMarcinik.Mvc.Domain.DataSource.Grid
+﻿namespace JanuszMarcinik.Mvc.DataSource
 {
     public enum GridSortOrder
     {

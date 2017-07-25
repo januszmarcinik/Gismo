@@ -76,12 +76,14 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string PageNotFound = "PageNotFound";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string PageNotFound = "PageNotFound";
         }
 
 
@@ -114,6 +116,17 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void PageNotFoundOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult PageNotFound()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PageNotFound);
+            PageNotFoundOverride(callInfo);
             return callInfo;
         }
 

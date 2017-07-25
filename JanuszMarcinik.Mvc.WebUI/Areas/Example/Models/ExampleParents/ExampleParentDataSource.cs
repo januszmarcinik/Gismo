@@ -1,4 +1,4 @@
-﻿using JanuszMarcinik.Mvc.Domain.DataSource;
+﻿using JanuszMarcinik.Mvc.DataSource;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
 {
@@ -13,5 +13,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
 
             this.Title = "Parents";
         }
+
+        public string Text { get; set; }
     }
 }

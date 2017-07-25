@@ -1,4 +1,4 @@
-﻿using JanuszMarcinik.Mvc.Domain.DataSource;
+﻿using JanuszMarcinik.Mvc.DataSource;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles
 {

@@ -1,5 +1,4 @@
-﻿using JanuszMarcinik.Mvc.Domain.DataSource.Grid;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace JanuszMarcinik.Mvc.Domain.DataSource
+namespace JanuszMarcinik.Mvc.DataSource
 {
     public abstract class DataSource<TModel> where TModel : class
     {
@@ -100,18 +99,18 @@ namespace JanuszMarcinik.Mvc.Domain.DataSource
                 }
                 else
                 {
-                    var gridAttribute = prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(GridAttribute));
+                    var gridAttribute = prop.GetCustomAttribute<GridAttribute>();
                     if (gridAttribute != null)
                     {
-                        var displayAttribute = prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(DisplayAttribute));
+                        var displayAttribute = prop.GetCustomAttribute<DisplayAttribute>();
                         if (displayAttribute != null)
                         {
-                            customProperty.DisplayName = displayAttribute.NamedArguments.First().TypedValue.Value.ToString();
+                            customProperty.DisplayName = displayAttribute.Name;
                         }
 
                         try
                         {
-                            if ((bool)gridAttribute.NamedArguments.FirstOrDefault(x => x.MemberName == "IsImage").TypedValue.Value)
+                            if (gridAttribute.IsImage)
                             {
                                 customProperty.IsImagePath = true;
                                 customProperty.DisplayName = string.Empty;

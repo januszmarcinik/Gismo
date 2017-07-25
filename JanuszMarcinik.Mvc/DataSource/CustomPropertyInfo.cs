@@ -1,8 +1,7 @@
-﻿using JanuszMarcinik.Mvc.Domain.DataSource.Grid;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace JanuszMarcinik.Mvc.Domain.DataSource
+namespace JanuszMarcinik.Mvc.DataSource
 {
     public class CustomPropertyInfo
     {

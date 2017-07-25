@@ -1,4 +1,4 @@
-﻿using JanuszMarcinik.Mvc.Domain.DataSource;
+﻿using JanuszMarcinik.Mvc.DataSource;
 using JanuszMarcinik.Mvc.Domain.Models.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

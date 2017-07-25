@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace JanuszMarcinik.Mvc.Domain.DataSource.Grid
+namespace JanuszMarcinik.Mvc.DataSource
 {
     public class GridRow
     {

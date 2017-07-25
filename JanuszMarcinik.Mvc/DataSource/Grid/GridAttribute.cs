@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JanuszMarcinik.Mvc.Domain.DataSource
+namespace JanuszMarcinik.Mvc.DataSource
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class GridAttribute : Attribute
