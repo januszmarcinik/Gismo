@@ -1,4 +1,5 @@
-﻿using JanuszMarcinik.Mvc.DataSource;
+﻿using System;
+using JanuszMarcinik.Mvc.DataSource;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
 {
@@ -6,8 +7,13 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
     {
         public UserDataSource()
         {
-            this.BackAction = MVC.Example.ExampleParents.List();
-            this.EditAction = MVC.Example.ExampleChildrens.Edit();
+            //this.BackAction = MVC.Example.ExampleParents.List();
+            //this.EditAction = MVC.Example.ExampleChildrens.Edit();
+        }
+
+        protected override void SetEditActions()
+        {
+            throw new NotImplementedException();
         }
     }
 }

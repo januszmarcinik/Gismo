@@ -1,6 +1,5 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using JanuszMarcinik.Mvc.Domain.Models.Examples;
 using JanuszMarcinik.Mvc.Domain.Data;
 using System.Data.Entity;
@@ -16,28 +15,28 @@ namespace JanuszMarcinik.Mvc.Domain.Repositories.Examples.Concrete
             get { return _context.ExampleParents; }
         }
 
-        public async Task<ExampleParent> GetAsync(int id)
+        public ExampleParent Get(int id)
         {
-            return await _context.ExampleParents.FindAsync(id);
+            return _context.ExampleParents.Find(id);
         }
             
-        public async Task CreateAsync(ExampleParent entity)
+        public void Create(ExampleParent entity)
         {
             _context.ExampleParents.Add(entity);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task UpdateAsync(ExampleParent entity)
+        public void Update(ExampleParent entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void Delete(int id)
         {
-            var entity = await _context.ExampleParents.FindAsync(id);
+            var entity = Get(id);
             _context.ExampleParents.Remove(entity);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

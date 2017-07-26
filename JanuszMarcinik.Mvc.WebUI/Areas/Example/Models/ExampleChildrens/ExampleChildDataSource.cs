@@ -4,13 +4,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens
 {
     public class ExampleChildDataSource : DataSource<ExampleChildViewModel>
     {
-        public ExampleChildDataSource(int parentId)
+        protected override void SetEditActions()
         {
-            this.AddAction = MVC.Example.ExampleChildrens.Create(parentId);
-            this.BackAction = MVC.Example.ExampleParents.List();
-            this.EditAction = MVC.Example.ExampleChildrens.Edit();
-
-            this.Title = "Chilrens";
+            foreach (var item in this.Rows)
+            {
+                item.EditAction = JMap.Example.ExampleChildrens.Edit(item.PrimaryKeyId);
+            }
         }
     }
 }

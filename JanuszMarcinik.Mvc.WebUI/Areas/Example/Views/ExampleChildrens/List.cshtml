@@ -1,0 +1,21 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens.ExampleChildDataSource
+
+@{
+    ViewBag.Title = "List";
+}
+
+@using (var panel = Html.Bootstrap().Begin(new Panel()))
+{
+    using (panel.BeginBody())
+    {
+        @Html.Grid(Url, Model.Headers, Model.Rows)
+    }
+
+    using (panel.BeginFooter())
+    {
+        <div class="btn-group">
+            @Html.Bootstrap().AddButton(JMap.Example.ExampleChildrens.Create(48))
+            @Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List())
+        </div>
+    }
+}

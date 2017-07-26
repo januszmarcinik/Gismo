@@ -6,12 +6,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Default.Controllers
     {
         public virtual ActionResult Index()
         {
-            return View(MVC.Default.Home.Views.Index);
+            return View();
         }
 
         public virtual ActionResult PageNotFound()
         {
-            return View(MVC.Shared.Views._PageNotFound);
+            return View("_PageNotFound");
         }
     }
 }

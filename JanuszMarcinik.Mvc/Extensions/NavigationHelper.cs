@@ -1,6 +1,4 @@
-﻿using JanuszMarcinik.Mvc.JMap;
-using System.Text;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc
 {
@@ -12,24 +10,29 @@ namespace JanuszMarcinik.Mvc
             var ol = new TagBuilder("ol");
             ol.AddCssClass("breadcrumb");
 
-            var elements = new StringBuilder();
+            ol.InnerHtml = GetBreadCrumbItem(urlHelper, JMap.Default.Home.Index());
 
             foreach (var action in actions)
             {
-                var breadcrumbItem = new TagBuilder("li");
-
-                var link = new TagBuilder("a");
-                link.MergeAttribute("href", urlHelper.Action(action.ActionName, action.ControllerName, new { area = action.AreaName }));
-                link.SetInnerText(action.Title);
-
-                breadcrumbItem.InnerHtml = link.ToString();
-
-                elements.AppendLine(breadcrumbItem.ToString());
+                ol.InnerHtml += GetBreadCrumbItem(urlHelper, action);
             }
 
-            ol.InnerHtml = elements.ToString();
-
             return MvcHtmlString.Create(ol.ToString());
+        }
+        #endregion
+
+        #region GetBreadCrumbItem()
+        private static string GetBreadCrumbItem(UrlHelper urlHelper, ActionMap action)
+        {
+            var breadcrumbItem = new TagBuilder("li");
+
+            var link = new TagBuilder("a");
+            link.MergeAttribute("href", urlHelper.Action(action.ActionName, action.ControllerName, new { area = action.AreaName }));
+            link.SetInnerText(action.Title);
+
+            breadcrumbItem.InnerHtml = link.ToString();
+
+            return breadcrumbItem.ToString();
         }
         #endregion
     }

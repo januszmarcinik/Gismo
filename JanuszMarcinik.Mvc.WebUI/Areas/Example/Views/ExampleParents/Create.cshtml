@@ -1,0 +1,37 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentViewModel
+
+@{ 
+    ViewBag.Title = JMap.Example.ExampleParents.Create().Title;
+}
+
+@Html.Breadcrumbs(Url,
+    JMap.Default.Home.Index(),
+    JMap.Example.ExampleParents.List(),
+    JMap.Example.ExampleParents.Create())
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Text)
+                    @form.FormGroup().TextAreaFor(x => x.LongText)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List())
+            </div>
+        }
+    }
+}

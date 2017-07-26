@@ -22,9 +22,12 @@ namespace JanuszMarcinik.Mvc.WebUI
                       "~/Assets/js/bootstrap.js",
                       "~/Assets/js/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new ScriptBundle("~/Assets/js").Include(
+                      "~/Assets/js/application.js"));
+
+            bundles.Add(new StyleBundle("~/Assets/css").Include(
                       "~/Assets/css/bootstrap.css",
-                      "~/Assets/css/site.css",
+                      "~/Assets/css/application.css",
                       "~/Assets/css/font-awesome.min.css"));
         }
     }

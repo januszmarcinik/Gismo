@@ -73,25 +73,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSource\CustomPropertyInfo.cs" />
+    <Compile Include="DataSource\GridHeader.cs" />
     <Compile Include="DataSource\DataSource.cs" />
-    <Compile Include="DataSource\Grid\GridAttribute.cs" />
-    <Compile Include="DataSource\Grid\GridModel.cs" />
-    <Compile Include="DataSource\Grid\GridRow.cs" />
-    <Compile Include="DataSource\Grid\GridSortOrder.cs" />
-    <Compile Include="Extensions\BootstrapHelpers.cs" />
+    <Compile Include="DataSource\GridAttribute.cs" />
+    <Compile Include="DataSource\GridRow.cs" />
+    <Compile Include="Extensions\ButtonHelpers.cs" />
     <Compile Include="Extensions\EnumHelpers.cs" />
+    <Compile Include="Extensions\GridExtensions.cs" />
     <Compile Include="Extensions\HtmlHelpers.cs" />
     <Compile Include="Extensions\NavigationHelper.cs" />
+    <Compile Include="Extensions\UrlHelpers.cs" />
     <Compile Include="Icons\FontAwesome.cs" />
-    <Compile Include="JMap\Basics\ActionMap.cs" />
-    <Compile Include="JMap\Basics\AreaMap.cs" />
-    <Compile Include="JMap\Basics\ControllerMap.cs" />
-    <Compile Include="JMap\JMap.cs" />
-    <Compile Include="JMap\Maps\Default\AreaDefault.cs" />
-    <Compile Include="JMap\Maps\Default\ControllerHome.cs" />
-    <Compile Include="JMap\Maps\Example\AreaExample.cs" />
-    <Compile Include="JMap\Maps\Example\ControllerExampleParents.cs" />
+    <Compile Include="SiteMap\Basics\ActionMap.cs" />
+    <Compile Include="SiteMap\Basics\AreaMap.cs" />
+    <Compile Include="SiteMap\Basics\ControllerMap.cs" />
+    <Compile Include="SiteMap\JMap.cs" />
+    <Compile Include="SiteMap\Maps\Default\AreaDefault.cs" />
+    <Compile Include="SiteMap\Maps\Default\ControllerHome.cs" />
+    <Compile Include="SiteMap\Maps\Example\AreaExample.cs" />
+    <Compile Include="SiteMap\Maps\Example\ControllerExampleChildrens.cs" />
+    <Compile Include="SiteMap\Maps\Example\ControllerExampleParents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

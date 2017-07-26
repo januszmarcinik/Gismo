@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Models.Examples;
 using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract;
-using JanuszMarcinik.Mvc.WebUI.Areas.Default.Models;
 using JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
 {
-    public partial class ExampleChildrensController : Controller
+    public class ExampleChildrensController : ApplicationController
     {
         private IExampleChildrensRepository _exampleChildrensRepository;
 
@@ -18,29 +16,31 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
             this._exampleChildrensRepository = exampleChildrensRepository;
         }
 
-        public virtual ActionResult List(int parentId)
+        #region List()
+        public ViewResult List(int parentId)
         {
-            var datasource = new ExampleChildDataSource(parentId)
+            var datasource = new ExampleChildDataSource()
             {
-                Model = Mapper.Map<List<ExampleChildViewModel>>(_exampleChildrensRepository.GetByParentId(parentId))
+                Data = Mapper.Map<List<ExampleChildViewModel>>(_exampleChildrensRepository.GetByParentId(parentId))
             };
             datasource.Initialize();
 
-            return View(MVC.Shared.Views._Grid, datasource.GetGridModel());
+            return View(datasource);
         }
+        #endregion
 
         #region Create()
-        public virtual ActionResult Create(int parentId)
+        public ViewResult Create(int parentId)
         {
             var model = new ExampleChildViewModel();
             model.ParentId = parentId;
 
-            return View(MVC.Example.ExampleChildrens.Views.Edit, model);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual async Task<ActionResult> Create(ExampleChildViewModel model)
+        public ActionResult Create(ExampleChildViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -50,60 +50,60 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
                     ParentId = model.ParentId
                 };
 
-                await _exampleChildrensRepository.CreateAsync(child);
+                _exampleChildrensRepository.Create(child);
 
-                return RedirectToAction(MVC.Example.ExampleChildrens.List(model.ParentId));
+                return List(model.ParentId);
             }
 
-            return View(MVC.Example.ExampleChildrens.Views.Edit, model);
+            return View(model);
         }
         #endregion
 
         #region Edit
-        public virtual async Task<ActionResult> Edit(int id)
+        public ActionResult Edit(int id)
         {
-            var child = await _exampleChildrensRepository.GetAsync(id);
+            var child = _exampleChildrensRepository.Get(id);
             var model = Mapper.Map<ExampleChildViewModel>(child);
 
-            return View(MVC.Example.ExampleChildrens.Views.Edit, model);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual async Task<ActionResult> Edit(ExampleChildViewModel model)
+        public ActionResult Edit(ExampleChildViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var child = await _exampleChildrensRepository.GetAsync(model.Id);
+                var child = _exampleChildrensRepository.Get(model.Id);
                 child.Name = model.Name;
 
-                await _exampleChildrensRepository.UpdateAsync(child);
+                _exampleChildrensRepository.Update(child);
 
-                return RedirectToAction(MVC.Example.ExampleChildrens.List(model.ParentId));
+                return List(model.ParentId);
             }
 
-            return View(MVC.Example.ExampleChildrens.Views.Edit, model);
+            return View(model);
         }
         #endregion
 
         #region Delete()
-        public virtual ActionResult Delete(int id, int exampleParentId)
+        public PartialViewResult Delete(int id, int exampleParentId)
         {
             var model = new DeleteConfirmViewModel()
             {
                 Id = id,
-                ActionOnDelete = MVC.Example.ExampleChildrens.List(exampleParentId),
+                ActionOnDelete = JMap.Example.ExampleChildrens.List(exampleParentId),
                 ConfirmationText = "Czy na pewno usunąć childa?"
             };
 
-            return PartialView(MVC.Default.Shared.Views._DeleteConfirm, model);
+            return PartialView("_DeleteConfirm", model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual async Task<ActionResult> Delete(DeleteConfirmViewModel model)
+        public ActionResult Delete(DeleteConfirmViewModel model)
         {
-            await _exampleChildrensRepository.DeleteAsync(model.Id);
+            _exampleChildrensRepository.Delete(model.Id);
             return RedirectToAction(model.ActionOnDelete);
         }
         #endregion

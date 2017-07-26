@@ -3,90 +3,44 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.DataSource
 {
     public abstract class DataSource<TModel> where TModel : class
     {
-        public IEnumerable<TModel> Model { get; set; }
+        public IEnumerable<TModel> Data { get; set; }
 
-        public GridSortOrder SortOrder { get; set; } = GridSortOrder.ASC;
-        public string OrderBy { get; set; }
-
-        private GridModel GridModel { get; set; }
-
-        private List<CustomPropertyInfo> Properties { get; set; }
-        private List<GridRow> Rows { get; set; }
-
-        protected ActionResult AddAction { get; set; }
-        protected ActionResult BackAction { get; set; }
-        protected ActionResult ListAction { get; set; }
-
-        protected string PrimaryKeyName { get; set; } = "id";
-        protected Task<ActionResult> EditAction { get; set; }
-
-        protected string Title { get; set; }
+        public List<GridHeader> Headers { get; private set; }
+        public List<GridRow> Rows { get; private set; }
 
         #region Initialize()
         public virtual void Initialize()
         {
-            if (this.Model == null)
+            if (this.Data == null)
             {
-                this.Model = new List<TModel>();
+                this.Data = new List<TModel>();
             }
 
-            this.Properties = new List<CustomPropertyInfo>();
-            if (this.Model.Count() > 0)
+            this.Headers = new List<GridHeader>();
+            if (this.Data.Count() > 0)
             {
-                SetProperties(this.Model.First().GetType().GetProperties());
+                SetHeaders(this.Data.First().GetType().GetProperties());
             }
 
-            if (!string.IsNullOrEmpty(this.OrderBy))
-            {
-                this.Properties.SetSorting(this.OrderBy, this.SortOrder);
-                if (this.SortOrder == GridSortOrder.ASC)
-                {
-                    this.Model = this.Model.OrderBy(x => x.GetType().GetProperty(this.OrderBy).GetValue(x, null));
-                }
-                else
-                {
-                    this.Model = this.Model.OrderByDescending(x => x.GetType().GetProperty(this.OrderBy).GetValue(x, null));
-                }
-            }
+            SetRows(this.Data);
 
-            SetRows(this.Model);
-
-            if (this.EditAction != null)
-            {
-                foreach (var row in this.Rows)
-                {
-                    row.PrimaryKeyName = this.PrimaryKeyName;
-                    row.EditActionAsync = this.EditAction;
-                }
-            }
-
-            this.GridModel = new GridModel()
-            {
-                AddAction = this.AddAction,
-                BackAction = this.BackAction,
-                ListAction = this.ListAction,
-                Properties = this.Properties,
-                Rows = this.Rows,
-                Title = this.Title
-            };
+            SetEditActions();
         }
         #endregion
 
-        #region SetProperties()
-        private void SetProperties(PropertyInfo[] properties)
+        #region SetHeaders()
+        private void SetHeaders(PropertyInfo[] properties)
         {
-            this.Properties = new List<CustomPropertyInfo>();
+            this.Headers = new List<GridHeader>();
 
             foreach (var prop in properties)
             {
-                var customProperty = new CustomPropertyInfo()
+                var header = new GridHeader()
                 {
                     DisplayName = prop.Name,
                     PropertyName = prop.Name
@@ -94,8 +48,8 @@ namespace JanuszMarcinik.Mvc.DataSource
 
                 if (prop.Name == "Id")
                 {
-                    customProperty.IsPrimaryKey = true;
-                    this.Properties.Add(customProperty);
+                    header.IsPrimaryKey = true;
+                    this.Headers.Add(header);
                 }
                 else
                 {
@@ -105,30 +59,25 @@ namespace JanuszMarcinik.Mvc.DataSource
                         var displayAttribute = prop.GetCustomAttribute<DisplayAttribute>();
                         if (displayAttribute != null)
                         {
-                            customProperty.DisplayName = displayAttribute.Name;
+                            header.DisplayName = displayAttribute.Name;
                         }
 
-                        try
+                        header.Order = gridAttribute.Order;
+
+                        if (gridAttribute.IsImagePath)
                         {
-                            if (gridAttribute.IsImage)
-                            {
-                                customProperty.IsImagePath = true;
-                                customProperty.DisplayName = string.Empty;
-                            }
-                        }
-                        catch
-                        {
-                            customProperty.IsImagePath = false;
+                            header.IsImagePath = true;
+                            header.DisplayName = string.Empty;
                         }
 
-                        this.Properties.Add(customProperty);
+                        this.Headers.Add(header);
                     }
                 }
             }
 
             if (properties.Count() > 1)
             {
-                this.Properties = this.Properties.OrderBy(x => x.Order).ToList();
+                this.Headers = this.Headers.OrderBy(x => x.Order).ToList();
             }
         }
         #endregion
@@ -141,31 +90,31 @@ namespace JanuszMarcinik.Mvc.DataSource
             foreach (var item in data)
             {
                 var row = new GridRow();
-                foreach (var prop in this.Properties)
+                foreach (var prop in this.Headers)
                 {
-                    if (prop.IsPrimaryKey)
+                    try
                     {
-                        row.PrimaryKeyId = (int)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
-                    }
-                    else if (prop.IsImagePath)
-                    {
-                        row.ImagePath = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
-                    }
-                    else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType().BaseType == typeof(Enum))
-                    {
-                        var enumValue = (Enum)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
-                        row.Values.Add(enumValue.GetDescription());
-                    }
-                    else
-                    {
-                        try
+                        if (prop.IsPrimaryKey)
+                        {
+                            row.PrimaryKeyId = (int)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
+                        }
+                        else if (prop.IsImagePath)
+                        {
+                            row.ImagePath = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
+                        }
+                        else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType().BaseType == typeof(Enum))
+                        {
+                            var enumValue = (Enum)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
+                            row.Values.Add(enumValue.GetDescription());
+                        }
+                        else
                         {
                             row.Values.Add(item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString());
                         }
-                        catch
-                        {
-                            row.Values.Add(string.Empty);
-                        }
+                    }
+                    catch
+                    {
+                        row.Values.Add(string.Empty);
                     }
                 }
 
@@ -174,18 +123,6 @@ namespace JanuszMarcinik.Mvc.DataSource
         }
         #endregion
 
-        #region GetGridModel()
-        public GridModel GetGridModel()
-        {
-            if (this.GridModel == null)
-            {
-                throw new Exception("Grid model was not initialized. Run Initialize() method after DataSource invoked.");
-            }
-            else
-            {
-                return this.GridModel;
-            }
-        }
-        #endregion
+        protected abstract void SetEditActions();
     }
 }

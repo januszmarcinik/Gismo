@@ -1,0 +1,15 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentDataSource
+
+@{
+    ViewBag.Title = JMap.Example.ExampleParents.List().Title;
+}
+
+@Html.Breadcrumbs(Url,
+    JMap.Example.ExampleParents.List(),
+    JMap.Example.ExampleParents.Create())
+
+@Html.Grid(Url, Model.Headers, Model.Rows)
+
+@Html.ButtonsFooter(
+    Html.Bootstrap().AddButton(JMap.Example.ExampleParents.Create()),
+    Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List()))

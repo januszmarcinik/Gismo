@@ -1,0 +1,37 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens.ExampleChildViewModel
+
+@{
+    ViewBag.Title = "Nowy child";
+}
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.ParentId)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Name)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Example.ExampleChildrens.List(Model.ParentId))
+            </div>
+
+            <div class="btn-group pull-right">
+                @Html.Bootstrap().Button().Style(ButtonStyle.Danger).PrependIcon(FontAwesome.remove).Text("Usuń").TriggerModal("deleteConfirm")
+            </div>
+        }
+    }
+}
+
+@Html.Action(MVC.Example.ExampleChildrens.Delete(Model.Id, Model.ParentId))
