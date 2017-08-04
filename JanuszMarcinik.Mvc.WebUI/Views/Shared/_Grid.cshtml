@@ -1,0 +1,57 @@
+﻿@model JanuszMarcinik.Mvc.DataSource.IGrid
+
+@using (var form = Html.Bootstrap().Begin(new Form().Id("FormGrid")))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.PageIndex)
+    @Html.HiddenFor(x => x.TotalRows)
+
+    using (var table = Html.Bootstrap().Begin(new Table().Hover().Bordered()))
+    {
+        using (table.BeginHeader())
+        {
+            @Html.GridHeaders(Model.Headers)
+        }
+
+        using (table.BeginBody())
+        {
+            @Html.GridData(Url, Model.Rows)
+        }
+
+        <tfoot>
+            <tr class="active">
+                <td colspan="3">
+                    <div class="col-sm-3">
+                        @Html.Bootstrap().DropDownListFromEnumFor(x => x.PageSize).Class("min-default-width")
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        @Html.GridPager(Model.PageIndex, Model.PageSize, Model.TotalRows)
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="pull-right">
+                            <h5>@Model.PagerResult</h5>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    }
+}
+
+<script type="text/javascript">
+
+    function SubmitGridForm() {
+        $("#FormGrid").submit();
+    }
+
+    $("#PageSize").change(function () {
+        $("#PageIndex").val(1);
+        SubmitGridForm();
+    });
+
+    $(".BtnPageIndex").click(function () {
+        $("#PageIndex").val($(this).val());
+        SubmitGridForm();
+    });
+
+</script>

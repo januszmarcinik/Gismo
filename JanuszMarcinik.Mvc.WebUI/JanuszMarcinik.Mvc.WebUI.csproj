@@ -271,7 +271,8 @@
     <Content Include="Assets\js\respond.min.js" />
     <None Include="Assets\js\_references.js" />
     <Content Include="Assets\js\TwitterBootstrapMvcJs.js" />
-    <Content Include="Scripts\TwitterBootstrapMvcJs.js" />
+    <Content Include="Assets\js\jquery.unobtrusive-ajax.js" />
+    <Content Include="Assets\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -338,6 +339,7 @@
     <Content Include="Areas\Account\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_DeleteConfirm.cshtml" />
     <Content Include="Views\Shared\_PageNotFound.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

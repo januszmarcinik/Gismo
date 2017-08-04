@@ -5,10 +5,10 @@
 }
 
 @Html.Breadcrumbs(Url,
-    JMap.Example.ExampleParents.List(),
+    JMap.Example.ExampleParents.List(), 
     JMap.Example.ExampleParents.Create())
 
-@Html.Grid(Url, Model.Headers, Model.Rows)
+@Html.Partial("_Grid", Model)
 
 @Html.ButtonsFooter(
     Html.Bootstrap().AddButton(JMap.Example.ExampleParents.Create()),

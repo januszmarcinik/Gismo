@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
 {
-    public class ExampleParentsController : Controller
+    public class ExampleParentsController : ApplicationController
     {
         private IExampleParentsRepository _exampleParentsRepository;
 
@@ -26,15 +26,20 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
         #endregion
 
         #region List()
-        public ActionResult List()
+        public ActionResult List(ExampleParentDataSource datasource = null)
         {
-            var datasource = new ExampleParentDataSource()
-            {
-                Data = Mapper.Map<List<ExampleParentViewModel>>(_exampleParentsRepository.ExampleParents),
-            };
+            datasource.Data = Mapper.Map<List<ExampleParentViewModel>>(_exampleParentsRepository.ExampleParents);
             datasource.Initialize();
 
             return View(datasource);
+        }
+
+        [HttpPost]
+        [ActionName("List")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DataSource(ExampleParentDataSource datasource)
+        {
+            return List(datasource);
         }
         #endregion
 

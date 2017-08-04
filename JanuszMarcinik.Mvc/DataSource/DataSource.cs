@@ -6,12 +6,36 @@ using System.Reflection;
 
 namespace JanuszMarcinik.Mvc.DataSource
 {
-    public abstract class DataSource<TModel> where TModel : class
+    public abstract class DataSource<TModel> : IGrid where TModel : class
     {
         public IEnumerable<TModel> Data { get; set; }
 
-        public List<GridHeader> Headers { get; private set; }
-        public List<GridRow> Rows { get; private set; }
+        public List<GridHeader> Headers { get; set; }
+        public List<GridRow> Rows { get; set; }
+
+        public int PageIndex { get; set; }
+        public PageSize PageSize { get; set; }
+        public int TotalRows { get; set; }
+        public string PagerResult
+        {
+            get
+            {
+                var startIndex = this.PageIndex * (int)this.PageSize - (int)this.PageSize + 1;
+                var endIndex = startIndex + (int)this.PageSize - 1;
+
+                if (startIndex >= this.TotalRows)
+                {
+                    startIndex = this.TotalRows;
+                }
+
+                if (endIndex >= this.TotalRows)
+                {
+                    endIndex = this.TotalRows;
+                }
+
+                return $"Wyniki: {startIndex}-{endIndex} z {this.TotalRows}";
+            }
+        }
 
         #region Initialize()
         public virtual void Initialize()
@@ -22,12 +46,24 @@ namespace JanuszMarcinik.Mvc.DataSource
             }
 
             this.Headers = new List<GridHeader>();
-            if (this.Data.Count() > 0)
+            this.TotalRows = this.Data.Count();
+            if (this.TotalRows > 0)
             {
                 SetHeaders(this.Data.First().GetType().GetProperties());
             }
 
-            SetRows(this.Data);
+            if (this.PageSize == 0)
+            {
+                this.PageSize = PageSize.Ten;
+            }
+            if (this.PageIndex == 0)
+            {
+                this.PageIndex = 1;
+            }
+
+            SetRows(this.Data
+                .Skip((this.PageIndex * (int)this.PageSize) - (int)this.PageSize)
+                .Take((int)this.PageSize));
 
             SetEditActions();
         }

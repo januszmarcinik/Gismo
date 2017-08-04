@@ -34,3 +34,26 @@
 .bg-info{
     color: #fff;
 }
+
+.pagination {
+    display: unset;
+    margin: unset;
+}
+
+.pagination-first-last {
+    color: #fff !important;
+    background-color: #595959 !important;
+}
+
+.pagination-first-last:hover {
+    background-color: #373737 !important;
+}
+
+.min-default-width {
+    width: unset !important;
+}
+
+.div-float-right {
+    float: right;
+    margin-right: 10px;
+}
