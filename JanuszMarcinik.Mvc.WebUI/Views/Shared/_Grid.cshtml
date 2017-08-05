@@ -1,73 +1,69 @@
 ﻿@using JanuszMarcinik.Mvc.DataSource
 @model IGrid
 
-@using (var form = Html.Bootstrap().Begin(new Form().Id("FormGrid")))
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(x => x.PageIndex)
-    @Html.HiddenFor(x => x.TotalRows)
-    @Html.HiddenFor(x => x.OrderBy)
-    @Html.HiddenFor(x => x.SortOrder)
-    @Html.HiddenFor(x => x.LastOrderBy)
+@Html.HiddenFor(x => x.PageIndex)
+@Html.HiddenFor(x => x.TotalRows)
+@Html.HiddenFor(x => x.OrderBy)
+@Html.HiddenFor(x => x.SortOrder)
+@Html.HiddenFor(x => x.LastOrderBy)
 
-    <table class="table table-hover table-bordered">
+<table class="table table-hover table-bordered">
 
-        <thead>
-            <tr class="bg-info">
-                <th class="text-center">L/p</th>
-                @foreach (var header in Model.Headers.Where(x => x.PropertyName != "Id"))
-                {
-                    <th class="text-center cursor-pointer header-ordering" data-orderby="@header.PropertyName">
-                        @if (Model.OrderBy == header.PropertyName)
+    <thead>
+        <tr class="bg-info">
+            <th class="text-center">L/p</th>
+            @foreach (var header in Model.Headers.Where(x => x.PropertyName != "Id"))
+            {
+                <th class="text-center cursor-pointer header-ordering" data-orderby="@header.PropertyName">
+                    @if (Model.OrderBy == header.PropertyName)
+                    {
+                        if (Model.SortOrder == SortOrder.Ascending)
                         {
-                            if (Model.SortOrder == SortOrder.Ascending)
-                            {
-                                <i class="@FontAwesome.sort_amount_asc" aria-hidden="true"></i>
-                            }
-                            else
-                            {
-                                <i class="@FontAwesome.sort_amount_desc" aria-hidden="true"></i>
-                            }
+                            <i class="@FontAwesome.sort_amount_asc" aria-hidden="true"></i>
                         }
-                        @header.DisplayName
-                    </th>
+                        else
+                        {
+                            <i class="@FontAwesome.sort_amount_desc" aria-hidden="true"></i>
+                        }
+                    }
+                    @header.DisplayName
+                </th>
+            }
+        </tr>
+    </thead>
+
+    <tbody class="text-center">
+        @foreach (var row in Model.Rows)
+            {
+            <tr class="clicable-action" data-href="@Url.Action(row.EditAction)">
+                <td>@(Model.Rows.IndexOf(row) + 1)</td>
+                @foreach (var data in row.Values)
+                {
+                    <td>@data</td>
                 }
             </tr>
-        </thead>
+        }
+    </tbody>
 
-        <tbody class="text-center">
-            @foreach (var row in Model.Rows)
-            {
-                <tr class="clicable-action" data-href="@Url.Action(row.EditAction)">
-                    <td>@(Model.Rows.IndexOf(row) + 1)</td>
-                    @foreach (var data in row.Values)
-                    {
-                        <td>@data</td>
-                    }
-                </tr>
-            }
-        </tbody>
+    <tfoot>
+        <tr class="active">
+            <td colspan="3">
+                <div class="col-sm-3">
+                    @Html.Bootstrap().DropDownListFromEnumFor(x => x.PageSize).Class("min-default-width").ExcludeMembers(PageSize.Unset)
+                </div>
+                <div class="col-sm-6 text-center">
+                    @Html.GridPager(Model.PageIndex, Model.PageSize, Model.TotalRows)
+                </div>
+                <div class="col-sm-3">
+                    <div class="pull-right">
+                        <h5>@Model.PagerResult</h5>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
 
-        <tfoot>
-            <tr class="active">
-                <td colspan="3">
-                    <div class="col-sm-3">
-                        @Html.Bootstrap().DropDownListFromEnumFor(x => x.PageSize).Class("min-default-width")
-                    </div>
-                    <div class="col-sm-6 text-center">
-                        @Html.GridPager(Model.PageIndex, Model.PageSize, Model.TotalRows)
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="pull-right">
-                            <h5>@Model.PagerResult</h5>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </tfoot>
-
-    </table>
-}
+</table>
 
 <script type="text/javascript">
 
@@ -90,6 +86,12 @@
         $("#SortOrder").val("@Model.SortOrder");
         $("#LastOrderBy").val("@Model.LastOrderBy");
         SubmitGridForm();
+    });
+
+    $(document).ready(function () {
+        $(".accordion-toggle").addClass("center-block")
+        $(".accordion-toggle").html("<i class='fa fa-filter' aria-hidden='true'></i> Filtry");
+        $(".accordion-toggle").parent().parent().parent().removeClass("panel-default").addClass("panel-warning");
     });
 
 </script>

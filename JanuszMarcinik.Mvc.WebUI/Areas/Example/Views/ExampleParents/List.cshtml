@@ -8,7 +8,29 @@
     JMap.Example.ExampleParents.List(), 
     JMap.Example.ExampleParents.Create())
 
-@Html.Partial("_Grid", Model)
+@using (var form = Html.Bootstrap().Begin(new Form().Id("FormGrid")))
+{
+    @Html.AntiForgeryToken()
+
+    <hr />
+    <div class="row">
+        <div class="col-sm-4">
+            @Html.Bootstrap().TextBoxFor(x => x.Text).Placeholder("Text...")
+        </div>
+        <div class="col-sm-4">
+            @Html.Bootstrap().TextBoxFor(x => x.LongText).Placeholder("Długi text...")
+        </div>
+
+        <div class="col-sm-4">
+            <div class="pull-right">
+                @Html.Bootstrap().SubmitFilterButton()
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @Html.Partial("_Grid", Model)
+}
 
 @Html.ButtonsFooter(
     Html.Bootstrap().AddButton(JMap.Example.ExampleParents.Create()),

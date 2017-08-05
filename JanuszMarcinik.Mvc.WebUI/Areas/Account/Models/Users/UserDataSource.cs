@@ -5,10 +5,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
 {
     public class UserDataSource : DataSource<UserViewModel>
     {
-        public UserDataSource()
+        protected override void Filter()
         {
-            //this.BackAction = MVC.Example.ExampleParents.List();
-            //this.EditAction = MVC.Example.ExampleChildrens.Edit();
         }
 
         protected override void SetEditActions()

@@ -49,6 +49,8 @@ namespace JanuszMarcinik.Mvc.DataSource
                 this.Data = new List<TModel>();
             }
 
+            Filter();
+
             this.Headers = new List<GridHeader>();
             this.TotalRows = this.Data.Count();
             if (this.TotalRows > 0)
@@ -204,5 +206,7 @@ namespace JanuszMarcinik.Mvc.DataSource
         #endregion
 
         protected abstract void SetEditActions();
+
+        protected abstract void Filter();
     }
 }

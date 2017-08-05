@@ -85,6 +85,7 @@
     <Compile Include="Extensions\GridExtensions.cs" />
     <Compile Include="Extensions\HtmlHelpers.cs" />
     <Compile Include="Extensions\NavigationHelper.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\UrlHelpers.cs" />
     <Compile Include="Icons\FontAwesome.cs" />
     <Compile Include="SiteMap\Basics\ActionMap.cs" />

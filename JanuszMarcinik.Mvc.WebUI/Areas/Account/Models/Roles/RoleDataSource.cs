@@ -5,11 +5,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles
 {
     public class RoleDataSource : DataSource<RoleViewModel>
     {
-        public RoleDataSource()
+        protected override void Filter()
         {
-            //this.AddAction = MVC.Account.Roles.Create();
-            //this.BackAction = MVC.Account.Users.Index();
-            //this.EditAction = MVC.Account.Roles.Edit();
         }
 
         protected override void SetEditActions()

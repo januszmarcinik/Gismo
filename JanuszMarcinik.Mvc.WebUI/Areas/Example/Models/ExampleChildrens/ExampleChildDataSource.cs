@@ -1,4 +1,5 @@
-﻿using JanuszMarcinik.Mvc.DataSource;
+﻿using System;
+using JanuszMarcinik.Mvc.DataSource;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens
 {
@@ -10,6 +11,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens
             {
                 item.EditAction = JMap.Example.ExampleChildrens.Edit(item.PrimaryKeyId);
             }
+        }
+
+        protected override void Filter()
+        {
         }
     }
 }
