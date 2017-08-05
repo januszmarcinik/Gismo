@@ -1,22 +1,52 @@
-﻿@model JanuszMarcinik.Mvc.DataSource.IGrid
+﻿@using JanuszMarcinik.Mvc.DataSource
+@model IGrid
 
 @using (var form = Html.Bootstrap().Begin(new Form().Id("FormGrid")))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(x => x.PageIndex)
     @Html.HiddenFor(x => x.TotalRows)
+    @Html.HiddenFor(x => x.OrderBy)
+    @Html.HiddenFor(x => x.SortOrder)
+    @Html.HiddenFor(x => x.LastOrderBy)
 
-    using (var table = Html.Bootstrap().Begin(new Table().Hover().Bordered()))
-    {
-        using (table.BeginHeader())
-        {
-            @Html.GridHeaders(Model.Headers)
-        }
+    <table class="table table-hover table-bordered">
 
-        using (table.BeginBody())
-        {
-            @Html.GridData(Url, Model.Rows)
-        }
+        <thead>
+            <tr class="bg-info">
+                <th class="text-center">L/p</th>
+                @foreach (var header in Model.Headers.Where(x => x.PropertyName != "Id"))
+                {
+                    <th class="text-center cursor-pointer header-ordering" data-orderby="@header.PropertyName">
+                        @if (Model.OrderBy == header.PropertyName)
+                        {
+                            if (Model.SortOrder == SortOrder.Ascending)
+                            {
+                                <i class="@FontAwesome.sort_amount_asc" aria-hidden="true"></i>
+                            }
+                            else
+                            {
+                                <i class="@FontAwesome.sort_amount_desc" aria-hidden="true"></i>
+                            }
+                        }
+                        @header.DisplayName
+                    </th>
+                }
+            </tr>
+        </thead>
+
+        <tbody class="text-center">
+            @foreach (var row in Model.Rows)
+            {
+                <tr class="clicable-action" data-href="@Url.Action(row.EditAction)">
+                    <td>@(Model.Rows.IndexOf(row) + 1)</td>
+                    @foreach (var data in row.Values)
+                    {
+                        <td>@data</td>
+                    }
+                </tr>
+            }
+        </tbody>
 
         <tfoot>
             <tr class="active">
@@ -35,7 +65,8 @@
                 </td>
             </tr>
         </tfoot>
-    }
+
+    </table>
 }
 
 <script type="text/javascript">
@@ -51,6 +82,13 @@
 
     $(".BtnPageIndex").click(function () {
         $("#PageIndex").val($(this).val());
+        SubmitGridForm();
+    });
+
+    $(".header-ordering").click(function () {
+        $("#OrderBy").val($(this).attr("data-orderby"));
+        $("#SortOrder").val("@Model.SortOrder");
+        $("#LastOrderBy").val("@Model.LastOrderBy");
         SubmitGridForm();
     });
 

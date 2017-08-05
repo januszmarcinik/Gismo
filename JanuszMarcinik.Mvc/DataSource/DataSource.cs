@@ -37,6 +37,10 @@ namespace JanuszMarcinik.Mvc.DataSource
             }
         }
 
+        public string LastOrderBy { get; set; }
+        public string OrderBy { get; set; }
+        public SortOrder SortOrder { get; set; }
+
         #region Initialize()
         public virtual void Initialize()
         {
@@ -52,19 +56,9 @@ namespace JanuszMarcinik.Mvc.DataSource
                 SetHeaders(this.Data.First().GetType().GetProperties());
             }
 
-            if (this.PageSize == 0)
-            {
-                this.PageSize = PageSize.Ten;
-            }
-            if (this.PageIndex == 0)
-            {
-                this.PageIndex = 1;
-            }
-
-            SetRows(this.Data
-                .Skip((this.PageIndex * (int)this.PageSize) - (int)this.PageSize)
-                .Take((int)this.PageSize));
-
+            Pager();
+            Sort();
+            SetRows();
             SetEditActions();
         }
         #endregion
@@ -119,11 +113,11 @@ namespace JanuszMarcinik.Mvc.DataSource
         #endregion
 
         #region SetRows()
-        private void SetRows(IEnumerable<TModel> data)
+        private void SetRows()
         {
             this.Rows = new List<GridRow>();
 
-            foreach (var item in data)
+            foreach (var item in this.Data)
             {
                 var row = new GridRow();
                 foreach (var prop in this.Headers)
@@ -156,6 +150,56 @@ namespace JanuszMarcinik.Mvc.DataSource
 
                 this.Rows.Add(row);
             }
+        }
+        #endregion
+
+        #region Pager()
+        private void Pager()
+        {
+            if (this.PageSize == PageSize.Unset)
+            {
+                this.PageSize = PageSize.Ten;
+            }
+            if (this.PageIndex == 0)
+            {
+                this.PageIndex = 1;
+            }
+
+            this.Data = this.Data
+                .Skip((this.PageIndex * (int)this.PageSize) - (int)this.PageSize)
+                .Take((int)this.PageSize);
+        }
+        #endregion
+
+        #region Sort()
+        private void Sort()
+        {
+            if (!string.IsNullOrEmpty(this.OrderBy))
+            {
+                if (this.SortOrder == SortOrder.Unset)
+                {
+                    this.SortOrder = SortOrder.Ascending;
+                }
+                else if (this.SortOrder == SortOrder.Ascending && this.LastOrderBy == this.OrderBy)
+                {
+                    this.SortOrder = SortOrder.Descending;
+                }
+                else if (this.SortOrder == SortOrder.Descending)
+                {
+                    this.SortOrder = SortOrder.Ascending;
+                }
+
+                if (this.SortOrder == SortOrder.Ascending)
+                {
+                    this.Data = this.Data.OrderBy(x => x.GetType().GetProperty(this.OrderBy).GetValue(x, null));
+                }
+                else if (this.SortOrder == SortOrder.Descending)
+                {
+                    this.Data = this.Data.OrderByDescending(x => x.GetType().GetProperty(this.OrderBy).GetValue(x, null));
+                }
+            }
+
+            this.LastOrderBy = this.OrderBy;
         }
         #endregion
 

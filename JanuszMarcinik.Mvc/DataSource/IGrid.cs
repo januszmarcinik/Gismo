@@ -10,5 +10,9 @@ namespace JanuszMarcinik.Mvc.DataSource
         PageSize PageSize { get; set; }
         int TotalRows { get; set; }
         string PagerResult { get; }
+
+        string LastOrderBy { get; set; }
+        string OrderBy { get; set; }
+        SortOrder SortOrder { get; set; }
     }
 }

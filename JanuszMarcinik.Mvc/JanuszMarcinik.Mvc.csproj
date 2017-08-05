@@ -78,6 +78,7 @@
     <Compile Include="DataSource\GridAttribute.cs" />
     <Compile Include="DataSource\GridRow.cs" />
     <Compile Include="DataSource\IGrid.cs" />
+    <Compile Include="DataSource\SortOrder.cs" />
     <Compile Include="DataSource\PageSize.cs" />
     <Compile Include="Extensions\ButtonHelpers.cs" />
     <Compile Include="Extensions\EnumHelpers.cs" />

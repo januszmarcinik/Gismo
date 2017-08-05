@@ -1,5 +1,4 @@
 ﻿using JanuszMarcinik.Mvc.DataSource;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -11,68 +10,6 @@ namespace JanuszMarcinik.Mvc
 {
     public static class GridExtensions
     {
-        #region GridHeaders()
-        public static MvcHtmlString GridHeaders(this HtmlHelper htmlHelper, List<GridHeader> headers)
-        {
-            var headerRow = new TagBuilder("tr");
-            headerRow.AddCssClass("bg-info");
-
-            var enumeratorHead = new TagBuilder("th");
-            enumeratorHead.AddCssClass("text-center");
-            enumeratorHead.SetInnerText("L/p");
-
-            headerRow.InnerHtml = enumeratorHead.ToString();
-
-            foreach (var header in headers)
-            {
-                if (header.PropertyName == "Id")
-                {
-                    continue;
-                }
-
-                var propertyHead = new TagBuilder("th");
-                propertyHead.AddCssClass("text-center");
-                propertyHead.SetInnerText(header.DisplayName);
-
-                headerRow.InnerHtml += propertyHead.ToString();
-            }
-
-            return MvcHtmlString.Create(headerRow.ToString());
-        }
-        #endregion
-
-        #region GridData()
-        public static MvcHtmlString GridData(this HtmlHelper htmlHelper, UrlHelper urlHelper, List<GridRow> rows)
-        {
-            var tableRows = new StringBuilder();
-
-            foreach (var row in rows)
-            {
-                var tableRow = new TagBuilder("tr");
-                tableRow.AddCssClass("text-center");
-                tableRow.AddCssClass("clicable-action");
-                tableRow.MergeAttribute("data-href", urlHelper.Action(row.EditAction));
-
-                var enumeratorRowData = new TagBuilder("td");
-                enumeratorRowData.SetInnerText((rows.IndexOf(row) + 1).ToString());
-
-                tableRow.InnerHtml = enumeratorRowData.ToString();
-
-                foreach (var value in row.Values)
-                {
-                    var tableRowData = new TagBuilder("td");
-                    tableRowData.SetInnerText(value);
-
-                    tableRow.InnerHtml += tableRowData.ToString();
-                }
-
-                tableRows.AppendLine(tableRow.ToString());
-            }
-
-            return MvcHtmlString.Create(tableRows.ToString());
-        }
-        #endregion
-
         #region GridPager()
         public static MvcHtmlString GridPager<TModel>(this HtmlHelper<TModel> htmlHelper, int pageIndex, PageSize pageSize, int totalRows)
         {

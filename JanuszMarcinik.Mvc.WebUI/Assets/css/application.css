@@ -27,6 +27,10 @@
     color: #ffffff;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .clicable-action {
     cursor: pointer;
 }

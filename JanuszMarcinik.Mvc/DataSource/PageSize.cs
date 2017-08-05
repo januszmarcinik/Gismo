@@ -4,6 +4,8 @@ namespace JanuszMarcinik.Mvc.DataSource
 {
     public enum PageSize
     {
+        Unset = 0,
+
         [Description("2")]
         Two = 2,
 
