@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.DataSource;
 using JanuszMarcinik.Mvc.Domain.Models.Examples;
+using JanuszMarcinik.Mvc.Domain.Models.Media;
 using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract;
+using JanuszMarcinik.Mvc.Domain.Repositories.Media.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -12,10 +15,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
     public class ExampleParentsController : ApplicationController
     {
         private IExampleParentsRepository _exampleParentsRepository;
+        private IImagesRepository _imagesRepository;
 
-        public ExampleParentsController(IExampleParentsRepository exampleParentsRepository)
+        public ExampleParentsController(IExampleParentsRepository exampleParentsRepository, IImagesRepository imagesRepository)
         {
             this._exampleParentsRepository = exampleParentsRepository;
+            this._imagesRepository = imagesRepository;
         }
 
         #region Index()
@@ -64,8 +69,35 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
                 };
 
                 _exampleParentsRepository.Create(parent);
+                _exampleParentsRepository.SaveChanges();
 
-                return List();
+                if (model.Upload != null)
+                {
+                    try
+                    {
+                        var photo = new Photo()
+                        {
+                            ObjectId = parent.Id,
+                            ObjectTypeName = nameof(ExampleParent),
+                            FileName = $"Image{parent.Id}",
+                            DirectoryPath = "ExampleParents",
+                            Title = "NoTitle"
+                        };
+
+                        _imagesRepository.Upload(photo, model.Upload);
+                        _imagesRepository.SaveChanges();
+
+                        parent.PhotoId = photo.Id;
+                        _exampleParentsRepository.Update(parent);
+                        _exampleParentsRepository.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                }
+
+                return RedirectToAction(JMap.Example.ExampleParents.List());
             }
 
             return View(model);
@@ -91,9 +123,44 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
                 parent.Text = model.Text;
                 parent.LongText = model.LongText;
 
-                _exampleParentsRepository.Update(parent);
+                if (model.RemovePhoto)
+                {
+                    _imagesRepository.Remove(parent.PhotoId.Value);
 
-                return List();
+                    parent.PhotoId = null;
+                    _exampleParentsRepository.Update(parent);
+                    _exampleParentsRepository.SaveChanges();
+
+                    _imagesRepository.SaveChanges();
+                }
+                else if (model.Upload != null)
+                {
+                    try
+                    {
+                        var image = new Photo()
+                        {
+                            ObjectId = parent.Id,
+                            ObjectTypeName = nameof(ExampleParent),
+                            FileName = $"Image{parent.Id}",
+                            DirectoryPath = "ExampleParents",
+                            Title = "NoTitle"
+                        };
+
+                        _imagesRepository.Upload(image, model.Upload);
+                        _imagesRepository.SaveChanges();
+
+                        parent.PhotoId = image.Id;
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+                }
+
+                _exampleParentsRepository.Update(parent);
+                _exampleParentsRepository.SaveChanges();
+
+                return RedirectToAction(JMap.Example.ExampleParents.List());
             }
 
             return View(model);
@@ -117,7 +184,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Controllers
         public ActionResult Delete(DeleteConfirmViewModel model)
         {
             _exampleParentsRepository.Delete(model.Id);
-            return List();
+            _exampleParentsRepository.SaveChanges();
+
+            return RedirectToAction(JMap.Example.ExampleParents.List());
         }
         #endregion
     }

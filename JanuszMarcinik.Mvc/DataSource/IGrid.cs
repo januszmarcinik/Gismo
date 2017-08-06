@@ -6,6 +6,7 @@ namespace JanuszMarcinik.Mvc.DataSource
     {
         List<GridHeader> Headers { get; set; }
         List<GridRow> Rows { get; set; }
+
         int PageIndex { get; set; }
         PageSize PageSize { get; set; }
         int TotalRows { get; set; }

@@ -1,5 +1,4 @@
-﻿@using JanuszMarcinik.Mvc.SiteMap
-@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentViewModel
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents.ExampleParentViewModel
 
 @{ 
     ViewBag.Title = JMap.Example.ExampleParents.Edit(Model.Id).Title;
@@ -10,7 +9,7 @@
     JMap.Example.ExampleParents.List(),
     JMap.Example.ExampleParents.Edit(Model.Id))
 
-@using (var form = Html.Bootstrap().Begin(new Form()))
+@using (var form = Html.Bootstrap().Begin(new Form().Upload()))
 {
     using (var panel = Html.Bootstrap().Begin(new Panel()))
     {
@@ -24,63 +23,26 @@
                     @form.FormGroup().TextBoxFor(x => x.Text)
                     @form.FormGroup().TextAreaFor(x => x.LongText)
                 </div>
+                <div class="col-sm-6">
+                    @if (Model.Photo == null)
+                    {
+                        @form.FormGroup().FileFor(x => x.Upload)
+                    }
+                    else
+                    {
+                        <img class="img-rounded img-thumbnail" height="300" src="~/Images/@Model.Photo.Path" />
+                        @form.FormGroup().CheckBoxFor(x => x.RemovePhoto)
+                    }
+                </div>
             </div>
         }
-
-        @*using (panel.BeginFooter())
-        {
-            <div class="btn-group">
-                @Html.Bootstrap().SubmitSaveButton()
-                @Html.Bootstrap().ListButton(JMap.Example.ExampleChildrens.List(Model.Id))
-                @Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List())
-            </div>
-
-            <div class="btn-group pull-right">
-                @Html.Bootstrap().ConfirmDeleteButton()
-            </div>
-        }*@
     }
+
+    @Html.ButtonsFooter(
+        Html.Bootstrap().SubmitSaveButton(),
+        Html.Bootstrap().ListButton(JMap.Example.ExampleChildrens.List(Model.Id)),
+        Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List()),
+        Html.Bootstrap().ConfirmDeleteButton())
 }
-
-@*@Html.ButtonsFooter(
-    Html.Bootstrap().SubmitSaveButton(),
-    Html.Bootstrap().ListButton(JMap.Example.ExampleChildrens.List(Model.Id)),
-    Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List()),
-    Html.Bootstrap().ConfirmDeleteButton())*@
-@*<div class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <p class="navbar-text">
-            @Html.Bootstrap().SubmitSaveButton()
-            @Html.Bootstrap().ListButton(JMap.Example.ExampleChildrens.List(Model.Id))
-            @Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List())
-            @Html.Bootstrap().ConfirmDeleteButton()
-        </p>
-    </div>
-</div>*@
-
-@*<div class="navbar-fixed-bottom navbar-default navbar">
-    <div class="container-fluid">
-        <p class="navbar-text">
-            <button class="btn-primary  btn" type="submit"><i class="fa fa-fw fa-save"></i> Zapisz</button>
-            <a class="btn  btn-info" href="/januszmarcinik_mvc/Example/ExampleChildrens/List?parentId=48"><i class="fa fa-fw fa-list"></i> Lista childrenów</a>
-            <a class="btn  btn-default" href="/januszmarcinik_mvc/Example/ExampleParents/List" title="Wstecz"><i class="fa fa-fw fa-arrow-left"></i> Lista parentów</a>
-            <button class="btn-danger  btn" data-target="#deleteConfirm" data-toggle="modal" type="button"><i class="fa fa-fw fa-remove"></i> Usuń</button>
-        </p>
-    </div>
-</div>*@
-
-<div class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <p class="navbar-text">
-            <button class="btn-primary  btn" type="submit"><i class="fa fa-fw fa-save"></i> Zapisz</button>
-            <a class="btn  btn-info" href="/januszmarcinik_mvc/Example/ExampleChildrens/List?parentId=48"><i class="fa fa-fw fa-list"></i> Lista childrenów</a>
-            <a class="btn  btn-default" href="/januszmarcinik_mvc/Example/ExampleParents/List" title="Wstecz"><i class="fa fa-fw fa-arrow-left"></i> Lista parentów</a>
-            <button class="btn-danger  btn" data-target="#deleteConfirm" data-toggle="modal" type="button"><i class="fa fa-fw fa-remove"></i> Usuń</button>
-        </p>
-    </div>
-</div>
-
-
-
 
 @Html.Action(JMap.Example.ExampleParents.Delete(Model.Id))

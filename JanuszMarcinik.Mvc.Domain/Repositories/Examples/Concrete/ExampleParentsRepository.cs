@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JanuszMarcinik.Mvc.Domain.Models.Examples;
 using JanuszMarcinik.Mvc.Domain.Data;
 using System.Data.Entity;
+using JanuszMarcinik.Mvc.Domain.Models.Media;
 
 namespace JanuszMarcinik.Mvc.Domain.Repositories.Examples.Concrete
 {
@@ -12,31 +13,32 @@ namespace JanuszMarcinik.Mvc.Domain.Repositories.Examples.Concrete
 
         public IEnumerable<ExampleParent> ExampleParents
         {
-            get { return _context.ExampleParents; }
+            get { return this._context.Set<ExampleParent>().AsNoTracking(); }
         }
 
         public ExampleParent Get(int id)
         {
-            return _context.ExampleParents.Find(id);
+            return this._context.Get<ExampleParent>(id);
         }
-            
+
         public void Create(ExampleParent entity)
         {
-            _context.ExampleParents.Add(entity);
-            _context.SaveChanges();
+            this._context.Create(entity);
         }
 
         public void Update(ExampleParent entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
+            this._context.Update(entity);
         }
 
         public void Delete(int id)
         {
-            var entity = Get(id);
-            _context.ExampleParents.Remove(entity);
-            _context.SaveChanges();
+            this._context.Delete<ExampleParent>(id);
+        }
+
+        public void SaveChanges()
+        {
+            this._context.SaveChanges();
         }
     }
 }

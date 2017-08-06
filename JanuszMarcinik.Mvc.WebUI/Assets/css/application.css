@@ -61,3 +61,10 @@
     float: right;
     margin-right: 10px;
 }
+
+.grid-photo-thumbnail-cell {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 65px;
+    width: 65px;
+}

@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -80,6 +81,7 @@
     <Compile Include="DataSource\IGrid.cs" />
     <Compile Include="DataSource\SortOrder.cs" />
     <Compile Include="DataSource\PageSize.cs" />
+    <Compile Include="Extensions\BootstrapHelpers.cs" />
     <Compile Include="Extensions\ButtonHelpers.cs" />
     <Compile Include="Extensions\EnumHelpers.cs" />
     <Compile Include="Extensions\GridExtensions.cs" />

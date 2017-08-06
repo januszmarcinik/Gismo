@@ -249,10 +249,6 @@
     <Content Include="Areas\Example\Views\ExampleChildrens\List.cshtml" />
     <Content Include="Areas\Example\Views\ExampleParents\List.cshtml" />
     <None Include="Assets\js\jquery-3.1.1.intellisense.js" />
-    <Content Include="App_Data\Images\bo_play_pattern.png" />
-    <Content Include="App_Data\Images\Leagues\bundesliga.png" />
-    <Content Include="App_Data\Images\Leagues\darmstadt.png" />
-    <Content Include="App_Data\Images\Teams\Bundesliga\borussia-dortmund.png" />
     <Content Include="Assets\js\bootstrap.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\jquery-3.1.1.js" />
@@ -273,6 +269,28 @@
     <Content Include="Assets\js\TwitterBootstrapMvcJs.js" />
     <Content Include="Assets\js\jquery.unobtrusive-ajax.js" />
     <Content Include="Assets\js\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Images\bo_play_pattern.png" />
+    <Content Include="Images\ExampleParents\Image1082.jpg" />
+    <Content Include="Images\Leagues\bundesliga.png" />
+    <Content Include="Images\Leagues\darmstadt.png" />
+    <Content Include="Images\Teams\Bundesliga\ausburg.png" />
+    <Content Include="Images\Teams\Bundesliga\bayern.png" />
+    <Content Include="Images\Teams\Bundesliga\darmstadt.png" />
+    <Content Include="Images\Teams\Bundesliga\dortmund.png" />
+    <Content Include="Images\Teams\Bundesliga\eintracht.png" />
+    <Content Include="Images\Teams\Bundesliga\freiburg.png" />
+    <Content Include="Images\Teams\Bundesliga\hamburger.png" />
+    <Content Include="Images\Teams\Bundesliga\herta.png" />
+    <Content Include="Images\Teams\Bundesliga\hoeffenheim.png" />
+    <Content Include="Images\Teams\Bundesliga\ingolstadt.png" />
+    <Content Include="Images\Teams\Bundesliga\koeln.png" />
+    <Content Include="Images\Teams\Bundesliga\leverkusen.png" />
+    <Content Include="Images\Teams\Bundesliga\mainz.png" />
+    <Content Include="Images\Teams\Bundesliga\moengladbach.png" />
+    <Content Include="Images\Teams\Bundesliga\rblipsk.png" />
+    <Content Include="Images\Teams\Bundesliga\schalke.png" />
+    <Content Include="Images\Teams\Bundesliga\werder.png" />
+    <Content Include="Images\Teams\Bundesliga\wolfsburg.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

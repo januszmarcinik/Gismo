@@ -13,6 +13,8 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
     using JanuszMarcinik.Mvc.Domain.Data;
     using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract;
     using JanuszMarcinik.Mvc.Domain.Repositories.Examples.Concrete;
+    using JanuszMarcinik.Mvc.Domain.Repositories.Media.Abstract;
+    using JanuszMarcinik.Mvc.Domain.Repositories.Media.Concrete;
 
     public static class NinjectWebCommon 
     {
@@ -68,6 +70,7 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
 
             kernel.Bind<IExampleParentsRepository>().To<ExampleParentsRepository>().InSingletonScope();
             kernel.Bind<IExampleChildrensRepository>().To<ExampleChildrensRepository>().InSingletonScope();
+            kernel.Bind<IImagesRepository>().To<ImagesRepository>().InSingletonScope();
         }        
     }
 }

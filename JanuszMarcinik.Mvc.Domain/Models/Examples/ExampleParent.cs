@@ -1,6 +1,7 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Data;
-using System;
+using JanuszMarcinik.Mvc.Domain.Models.Media;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace JanuszMarcinik.Mvc.Domain.Models.Examples
@@ -11,6 +12,10 @@ namespace JanuszMarcinik.Mvc.Domain.Models.Examples
         public string LongText { get; set; }
 
         public ICollection<ExampleChild> Childrens { get; set; }
+
+        [ForeignKey("Photo")]
+        public int? PhotoId { get; set; }
+        public virtual Photo Photo { get; set; }
     }
 
     internal class ExampleParentConfiguration : EntityTypeConfiguration<ExampleParent>

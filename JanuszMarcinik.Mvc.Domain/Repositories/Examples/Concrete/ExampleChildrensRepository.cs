@@ -13,32 +13,29 @@ namespace JanuszMarcinik.Mvc.Domain.Repositories.Examples.Concrete
 
         public IEnumerable<ExampleChild> GetByParentId(int parentId)
         {
-            return _context.ExampleChildrens
-                    .Where(x => x.ParentId == parentId);
+            return this._context.Set<ExampleChild>()
+                .Where(x => x.ParentId == parentId)
+                .AsNoTracking();
         }
 
         public ExampleChild Get(int id)
         {
-            return _context.ExampleChildrens.Find(id);
+            return this._context.Get<ExampleChild>(id);
         }
             
         public void Create(ExampleChild entity)
         {
-            _context.ExampleChildrens.Add(entity);
-            _context.SaveChanges();
+            this._context.Create(entity);
         }
 
         public void Update(ExampleChild entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
+            this._context.Update(entity);
         }
 
         public void Delete(int id)
         {
-            var entity = Get(id);
-            _context.ExampleChildrens.Remove(entity);
-            _context.SaveChanges();
+            this._context.Delete<ExampleChild>(id);
         }
     }
 }

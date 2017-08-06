@@ -6,6 +6,6 @@ namespace JanuszMarcinik.Mvc.DataSource
     public class GridAttribute : Attribute
     {
         public int Order { get; set; }
-        public bool IsImagePath { get; set; } = false;
+        public bool IsPhotoPath { get; set; } = false;
     }
 }

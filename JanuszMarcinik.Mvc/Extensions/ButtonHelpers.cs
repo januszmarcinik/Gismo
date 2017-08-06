@@ -30,7 +30,7 @@ namespace JanuszMarcinik.Mvc
         #region ListButton()
         public static BootstrapActionLinkButton ListButton<TModel>(this BootstrapBase<TModel> bootstrap, ActionMap result) where TModel : class
         {
-            return bootstrap.ActionLinkButton(result).PrependIcon(FontAwesome.list).Style(ButtonStyle.Info);
+            return bootstrap.ActionLinkButton(result).PrependIcon(FontAwesome.list).Style(ButtonStyle.Info).Text(result.Title);
         }
         #endregion
 

@@ -10,7 +10,7 @@ namespace JanuszMarcinik.Mvc.DataSource
         }
 
         public int PrimaryKeyId { get; set; }
-        public string ImagePath { get; set; }
+        public string PhotoThumbnailPath { get; set; }
         public List<string> Values { get; set; }
         public ActionMap EditAction { get; set; }
     }

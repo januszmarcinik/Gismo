@@ -70,6 +70,7 @@ namespace JanuszMarcinik.Mvc.DataSource
         {
             this.Headers = new List<GridHeader>();
 
+
             foreach (var prop in properties)
             {
                 var header = new GridHeader()
@@ -96,10 +97,10 @@ namespace JanuszMarcinik.Mvc.DataSource
 
                         header.Order = gridAttribute.Order;
 
-                        if (gridAttribute.IsImagePath)
+                        if (gridAttribute.IsPhotoPath)
                         {
-                            header.IsImagePath = true;
                             header.DisplayName = string.Empty;
+                            header.IsPhotoThumbnailPath = true;
                         }
 
                         this.Headers.Add(header);
@@ -130,9 +131,9 @@ namespace JanuszMarcinik.Mvc.DataSource
                         {
                             row.PrimaryKeyId = (int)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
                         }
-                        else if (prop.IsImagePath)
+                        else if (prop.IsPhotoThumbnailPath)
                         {
-                            row.ImagePath = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
+                            row.PhotoThumbnailPath = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
                         }
                         else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType().BaseType == typeof(Enum))
                         {

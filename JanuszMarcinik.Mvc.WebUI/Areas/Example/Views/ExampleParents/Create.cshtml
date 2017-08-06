@@ -9,7 +9,7 @@
     JMap.Example.ExampleParents.List(),
     JMap.Example.ExampleParents.Create())
 
-@using (var form = Html.Bootstrap().Begin(new Form()))
+@using (var form = Html.Bootstrap().Begin(new Form().Upload()))
 {
     using (var panel = Html.Bootstrap().Begin(new Panel()))
     {
@@ -23,15 +23,14 @@
                     @form.FormGroup().TextBoxFor(x => x.Text)
                     @form.FormGroup().TextAreaFor(x => x.LongText)
                 </div>
+                <div class="col-sm-6">
+                    @form.FormGroup().FileFor(x => x.Photo)
+                </div>
             </div>
         }
 
-        using (panel.BeginFooter())
-        {
-            <div class="btn-group">
-                @Html.Bootstrap().SubmitSaveButton()
-                @Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List())
-            </div>
-        }
+        @Html.ButtonsFooter(
+            Html.Bootstrap().SubmitSaveButton(),
+            Html.Bootstrap().BackButton(JMap.Example.ExampleParents.List()))
     }
 }

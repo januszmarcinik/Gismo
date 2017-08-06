@@ -10,5 +10,6 @@ namespace JanuszMarcinik.Mvc.Domain.Repositories.Examples.Abstract
         void Create(ExampleParent entity);
         void Update(ExampleParent entity);
         void Delete(int id);
+        void SaveChanges();
     }
 }

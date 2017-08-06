@@ -2,8 +2,8 @@
 {
     public class GridHeader
     {
-        public bool IsPrimaryKey { get; set; } = false;
-        public bool IsImagePath { get; set; } = false;
+        public bool IsPrimaryKey { get; set; }
+        public bool IsPhotoThumbnailPath { get; set; }
 
         public string PropertyName { get; set; }
         public string DisplayName { get; set; }

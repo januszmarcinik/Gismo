@@ -17,7 +17,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example
         #region ExampleProfile()
         public ExampleProfile()
         {
-            CreateMap<ExampleParent, ExampleParentViewModel>();
+            CreateMap<ExampleParent, ExampleParentViewModel>()
+                .Ignore(x => x.RemovePhoto)
+                .Ignore(x => x.Upload);
+
             CreateMap<ExampleChild, ExampleChildViewModel>();
         }
         #endregion

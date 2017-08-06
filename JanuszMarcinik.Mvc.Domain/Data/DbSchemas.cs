@@ -4,5 +4,6 @@
     {
         public const string Identity = "Identity";
         public const string Example = "Example";
+        public const string Media = "Media";
     }
 }
