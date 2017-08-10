@@ -354,7 +354,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Account\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_DeleteConfirm.cshtml" />
     <Content Include="Views\Shared\_PageNotFound.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />

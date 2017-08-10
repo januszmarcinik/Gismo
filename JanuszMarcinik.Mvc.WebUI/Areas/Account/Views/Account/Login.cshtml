@@ -1,13 +1,13 @@
 ﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Account
 @model LoginViewModel
 @{
-    ViewBag.Title = "Logowanie";
+    ViewBag.Title = JMap.Account.Account.Login().Title;
 }
 
 <h2>@ViewBag.Title</h2>
 <div class="row">
     <div class="col-sm-8">
-            @using (var form = Html.Bootstrap().Begin(new Form(MVC.Account.Account.Login(ViewBag.ReturnUrl)).Class("form-horizontal")
+            @using (var form = Html.Bootstrap().Begin(new Form().Class("form-horizontal")
                 .LabelWidthSm(2).InputWidthSm(10)))
             {
                 @Html.AntiForgeryToken()

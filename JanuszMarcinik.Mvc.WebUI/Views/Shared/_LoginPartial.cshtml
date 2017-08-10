@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        @*@if (User.IsInRole("Administrator"))
+        {
+            <li>@Html.Bootstrap().ActionLink("Panel administratora", MVC.Account.Users.Index())</li>
+        }*@
+        <li>@Html.ActionLink(JMap.Account.Manage.Index())</li>
+        <li>@Html.ActionLink(JMap.Account.Account.LogOff())</li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink(JMap.Account.Account.Register())</li>
+        <li>@Html.ActionLink(JMap.Account.Account.Login())</li>
+    </ul>
+}

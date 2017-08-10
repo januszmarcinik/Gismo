@@ -11,7 +11,7 @@
 
         public ActionMap ActionMapInit()
         {
-            return new ActionMap(this.AreaName, this.ControllerName);
+            return new ActionMap(this.AreaName, this.ControllerName).AddRouteValue("area", this.AreaName);
         }
     }
 }

@@ -9,22 +9,17 @@ namespace JanuszMarcinik.Mvc
 {
     public static class HtmlHelpers
     {
-        #region SubmitLink()
-        public static MvcHtmlString SubmitLink(this HtmlHelper html, string text, string formId)
-        {
-            var tag = new TagBuilder("a");
-
-            tag.MergeAttribute("href", string.Format("javascript: document.getElementById('{0}').submit()", formId));
-            tag.InnerHtml = text;
-
-            return MvcHtmlString.Create(tag.ToString());
-        }
-        #endregion
-
         #region Action()
         public static MvcHtmlString Action(this HtmlHelper htmlHelper, ActionMap result)
         {
             return htmlHelper.Action(result.ActionName, result.ControllerName, result.RouteValues);
+        }
+        #endregion
+
+        #region ActionLink()
+        public static MvcHtmlString ActionLink(this HtmlHelper htmlHelper, ActionMap result)
+        {
+            return htmlHelper.ActionLink(result.Title, result.ActionName, result.ControllerName, result.RouteValues, null);
         }
         #endregion
 

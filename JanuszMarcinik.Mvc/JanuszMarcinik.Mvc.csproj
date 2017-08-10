@@ -94,6 +94,9 @@
     <Compile Include="SiteMap\Basics\AreaMap.cs" />
     <Compile Include="SiteMap\Basics\ControllerMap.cs" />
     <Compile Include="SiteMap\JMap.cs" />
+    <Compile Include="SiteMap\Maps\Account\AreaAccount.cs" />
+    <Compile Include="SiteMap\Maps\Account\ControllerManage.cs" />
+    <Compile Include="SiteMap\Maps\Account\ControllerAccount.cs" />
     <Compile Include="SiteMap\Maps\Default\AreaDefault.cs" />
     <Compile Include="SiteMap\Maps\Default\ControllerHome.cs" />
     <Compile Include="SiteMap\Maps\Example\AreaExample.cs" />
@@ -105,5 +108,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
