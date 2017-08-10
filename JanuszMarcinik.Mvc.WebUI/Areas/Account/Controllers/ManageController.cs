@@ -20,6 +20,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         {
         }
 
+
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
