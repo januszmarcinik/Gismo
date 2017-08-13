@@ -44,6 +44,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         {
             get
             {
+                var ddd = HttpContext.GetOwinContext().Authentication.User.Identity.GetUserId();
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
             private set

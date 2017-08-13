@@ -74,10 +74,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSource\GridHeader.cs" />
+    <Compile Include="DataSource\Grid\GridCell.cs" />
+    <Compile Include="DataSource\Grid\GridHeader.cs" />
     <Compile Include="DataSource\DataSource.cs" />
-    <Compile Include="DataSource\GridAttribute.cs" />
-    <Compile Include="DataSource\GridRow.cs" />
+    <Compile Include="DataSource\Grid\GridAttribute.cs" />
+    <Compile Include="DataSource\Grid\GridRow.cs" />
     <Compile Include="DataSource\IGrid.cs" />
     <Compile Include="DataSource\SortOrder.cs" />
     <Compile Include="DataSource\PageSize.cs" />

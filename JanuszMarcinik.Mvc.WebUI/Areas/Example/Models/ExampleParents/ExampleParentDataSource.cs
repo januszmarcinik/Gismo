@@ -13,7 +13,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
         {
             foreach (var item in this.Rows)
             {
-                item.EditAction = JMap.Example.ExampleParents.Edit(item.PrimaryKeyId);
+                item.EditAction = JMap.Example.ExampleParents.Edit(item.PrimaryKey);
             }
         }
 

@@ -7,17 +7,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
 {
     public class ExampleParentViewModel
     {
+        [Grid(DataType = GridDataType.PrimaryKey)]
         public int Id { get; set; }
 
-        [Grid(Order = 2)]
+        [Grid(Order = 2, DataType = GridDataType.Text)]
         [Display(Name = "Text")]
         public string Text { get; set; }
 
-        [Grid(Order = 3)]
+        [Grid(Order = 3, DataType = GridDataType.Text)]
         [Display(Name = "Długi text")]
         public string LongText { get; set; }
 
-        [Grid(Order = 1, IsPhotoPath = true)]
+        [Grid(Order = 1, DataType = GridDataType.PhotoPath, DisplayName = "")]
         public string ThumbnailPath
         {
             get
