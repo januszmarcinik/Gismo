@@ -6,14 +6,14 @@
         {
             <li>@Html.Bootstrap().ActionLink("Panel administratora", MVC.Account.Users.Index())</li>
         }*@
-        <li>@Html.ActionLink(JMap.Account.Manage.Index())</li>
-        <li>@Html.ActionLink(JMap.Account.Account.LogOff())</li>
+        <li>@Html.ActionLink(JMap.Identity.Manage.Index())</li>
+        <li>@Html.ActionLink(JMap.Identity.Account.LogOff())</li>
     </ul>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink(JMap.Account.Account.Register())</li>
-        <li>@Html.ActionLink(JMap.Account.Account.Login())</li>
+        <li>@Html.ActionLink(JMap.Identity.Account.Register())</li>
+        <li>@Html.ActionLink(JMap.Identity.Account.Login())</li>
     </ul>
 }

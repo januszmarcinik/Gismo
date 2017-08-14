@@ -95,9 +95,9 @@
     <Compile Include="SiteMap\Basics\AreaMap.cs" />
     <Compile Include="SiteMap\Basics\ControllerMap.cs" />
     <Compile Include="SiteMap\JMap.cs" />
-    <Compile Include="SiteMap\Maps\Account\AreaAccount.cs" />
-    <Compile Include="SiteMap\Maps\Account\ControllerManage.cs" />
-    <Compile Include="SiteMap\Maps\Account\ControllerAccount.cs" />
+    <Compile Include="SiteMap\Maps\Identity\AreaAccount.cs" />
+    <Compile Include="SiteMap\Maps\Identity\ControllerManage.cs" />
+    <Compile Include="SiteMap\Maps\Identity\ControllerAccount.cs" />
     <Compile Include="SiteMap\Maps\Default\AreaDefault.cs" />
     <Compile Include="SiteMap\Maps\Default\ControllerHome.cs" />
     <Compile Include="SiteMap\Maps\Example\AreaExample.cs" />

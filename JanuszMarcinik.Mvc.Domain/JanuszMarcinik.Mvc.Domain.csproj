@@ -143,11 +143,11 @@
     <Compile Include="Repositories\Examples\Abstract\IExampleParentsRepository.cs" />
     <Compile Include="Repositories\Examples\Concrete\ExampleChildrensRepository.cs" />
     <Compile Include="Repositories\Examples\Concrete\ExampleParentsRepository.cs" />
-    <Compile Include="Repositories\Identity\ApplicationRoleManager.cs" />
-    <Compile Include="Repositories\Identity\ApplicationRoleStore.cs" />
-    <Compile Include="Repositories\Identity\ApplicationSignInManager.cs" />
-    <Compile Include="Repositories\Identity\ApplicationUserManager.cs" />
-    <Compile Include="Repositories\Identity\ApplicationUserStore.cs" />
+    <Compile Include="Services\Identity\Roles\RolesService.cs" />
+    <Compile Include="Services\Identity\Roles\RolesRepository.cs" />
+    <Compile Include="Services\Identity\SignIn\SignInService.cs" />
+    <Compile Include="Services\Identity\Users\UsersService.cs" />
+    <Compile Include="Services\Identity\Users\UsersRepository.cs" />
     <Compile Include="Services\Messages\EmailService.cs" />
     <Compile Include="Services\Messages\SmsService.cs" />
   </ItemGroup>
