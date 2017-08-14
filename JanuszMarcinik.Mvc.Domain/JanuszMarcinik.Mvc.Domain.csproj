@@ -150,7 +150,6 @@
     <Compile Include="Repositories\Identity\ApplicationUserStore.cs" />
     <Compile Include="Services\Messages\EmailService.cs" />
     <Compile Include="Services\Messages\SmsService.cs" />
-    <Compile Include="Services\Storage\ImagesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
