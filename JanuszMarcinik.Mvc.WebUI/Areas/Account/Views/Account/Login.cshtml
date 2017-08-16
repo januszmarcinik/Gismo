@@ -7,28 +7,23 @@
 <h2>@ViewBag.Title</h2>
 <div class="row">
     <div class="col-sm-8">
-            @using (var form = Html.Bootstrap().Begin(new Form().Class("form-horizontal")
-                .LabelWidthSm(2).InputWidthSm(10)))
+            @using (var form = Html.Bootstrap().Begin(new Form()))
             {
                 @Html.AntiForgeryToken()
                 <h4>Logowanie przy użyciu lokalnego konta</h4>
                 <hr />
                 @Html.Bootstrap().ValidationSummary().Class("text-danger")
-                @form.FormGroup().TextBoxFor(m => m.Email)
+                @form.FormGroup().TextBoxFor(m => m.Email).PrependIcon(FontAwesome.sort_alpha_desc)
                 @form.FormGroup().PasswordFor(m => m.Password)
                 @form.FormGroup().CheckBoxFor(m => m.RememberMe)
                 
                 @Html.Bootstrap().SubmitButton().Text("Zaloguj").Class("col-sm-offset-2")
                 <hr />
-                <p>@Html.Bootstrap().ActionLink("Utwórz nowe konto", MVC.Account.Account.Register())</p>
-                <p>@Html.Bootstrap().ActionLink("Zapomniałem hasła", MVC.Account.Account.ForgotPassword())</p>
+                <p>@Html.Bootstrap().ActionLink("Utwórz nowe konto", "Register", "Account")</p>
+                <p>@Html.Bootstrap().ActionLink("Zapomniałem hasła", "ForgotPassword", "Account")</p>
             }
     </div>
     <div class="col-sm-4">
-        @Html.Partial(MVC.Account.Account.Views._ExternalLoginsListPartial, new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
     </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
