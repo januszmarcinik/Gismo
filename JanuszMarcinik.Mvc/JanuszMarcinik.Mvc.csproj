@@ -74,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSource\GridCell.cs" />
     <Compile Include="DataSource\GridHeader.cs" />
     <Compile Include="DataSource\DataSource.cs" />
     <Compile Include="DataSource\GridAttribute.cs" />

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace JanuszMarcinik.Mvc.DataSource
 {
@@ -6,12 +7,29 @@ namespace JanuszMarcinik.Mvc.DataSource
     {
         public GridRow()
         {
-            this.Values = new List<string>();
+            this.Values = new List<GridCell>();
         }
 
-        public int PrimaryKeyId { get; set; }
-        public string PhotoThumbnailPath { get; set; }
-        public List<string> Values { get; set; }
+        public int PrimaryKey
+        {
+            get
+            {
+                int value = 0;
+
+                var primaryKey = this.Values.FirstOrDefault(x => x.DataType == GridDataType.PrimaryKey);
+                if (primaryKey != null)
+                {
+                    int.TryParse(primaryKey.Value, out value);
+                    return value;
+                }
+                else
+                {
+                    return value;
+                }
+            }
+        }
+
+        public List<GridCell> Values { get; set; }
         public ActionMap EditAction { get; set; }
     }
 }

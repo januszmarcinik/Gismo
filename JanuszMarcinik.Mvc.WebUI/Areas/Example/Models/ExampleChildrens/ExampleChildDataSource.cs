@@ -1,5 +1,4 @@
-﻿using System;
-using JanuszMarcinik.Mvc.DataSource;
+﻿using JanuszMarcinik.Mvc.DataSource;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens
 {
@@ -9,7 +8,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleChildrens
         {
             foreach (var item in this.Rows)
             {
-                item.EditAction = JMap.Example.ExampleChildrens.Edit(item.PrimaryKeyId);
+                item.EditAction = JMap.Example.ExampleChildrens.Edit(item.PrimaryKey);
             }
         }
 

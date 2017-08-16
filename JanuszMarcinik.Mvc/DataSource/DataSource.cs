@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
@@ -79,32 +78,26 @@ namespace JanuszMarcinik.Mvc.DataSource
                     PropertyName = prop.Name
                 };
 
-                if (prop.Name == "Id")
+                var gridAttribute = prop.GetCustomAttribute<GridAttribute>();
+                if (gridAttribute != null)
                 {
-                    header.IsPrimaryKey = true;
-                    this.Headers.Add(header);
-                }
-                else
-                {
-                    var gridAttribute = prop.GetCustomAttribute<GridAttribute>();
-                    if (gridAttribute != null)
+                    header.Order = gridAttribute.Order;
+                    header.DataType = gridAttribute.DataType;
+
+                    if (gridAttribute.DisplayName != null)
+                    {
+                        header.DisplayName = gridAttribute.DisplayName;
+                    }
+                    else
                     {
                         var displayAttribute = prop.GetCustomAttribute<DisplayAttribute>();
                         if (displayAttribute != null)
                         {
                             header.DisplayName = displayAttribute.Name;
                         }
-
-                        header.Order = gridAttribute.Order;
-
-                        if (gridAttribute.IsPhotoPath)
-                        {
-                            header.DisplayName = string.Empty;
-                            header.IsPhotoThumbnailPath = true;
-                        }
-
-                        this.Headers.Add(header);
                     }
+
+                    this.Headers.Add(header);
                 }
             }
 
@@ -123,32 +116,14 @@ namespace JanuszMarcinik.Mvc.DataSource
             foreach (var item in this.Data)
             {
                 var row = new GridRow();
+
                 foreach (var prop in this.Headers)
                 {
-                    try
+                    row.Values.Add(new GridCell()
                     {
-                        if (prop.IsPrimaryKey)
-                        {
-                            row.PrimaryKeyId = (int)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
-                        }
-                        else if (prop.IsPhotoThumbnailPath)
-                        {
-                            row.PhotoThumbnailPath = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
-                        }
-                        else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType().BaseType == typeof(Enum))
-                        {
-                            var enumValue = (Enum)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
-                            row.Values.Add(enumValue.GetDescription());
-                        }
-                        else
-                        {
-                            row.Values.Add(item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString());
-                        }
-                    }
-                    catch
-                    {
-                        row.Values.Add(string.Empty);
-                    }
+                        DataType = prop.DataType,
+                        Value = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString()
+                    });
                 }
 
                 this.Rows.Add(row);

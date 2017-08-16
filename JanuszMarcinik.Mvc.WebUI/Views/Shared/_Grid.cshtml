@@ -11,7 +11,7 @@
 
     <thead>
         <tr class="bg-info">
-            @foreach (var header in Model.Headers.Where(x => x.PropertyName != "Id"))
+            @foreach (var header in Model.Headers.Where(x => x.DataType != GridDataType.PrimaryKey))
             {
                 <th class="text-center cursor-pointer header-ordering" data-orderby="@header.PropertyName">
                     @if (Model.OrderBy == header.PropertyName)
@@ -35,18 +35,40 @@
         @foreach (var row in Model.Rows)
         {
             <tr class="clicable-action" data-href="@Url.Action(row.EditAction)">
-                @if (row.PhotoThumbnailPath.IsNotNullOrEmpty())
-                {
-                    <td style="background-image: url(../../Images/@row.PhotoThumbnailPath);" class="grid-photo-thumbnail-cell"></td>
-                }
-                else
-                {
-                    <td></td>
-                }
-
                 @foreach (var data in row.Values)
                 {
-                    <td>@data</td>
+                    if (data.DataType == GridDataType.PrimaryKey)
+                    {
+
+                    }
+                    else if (data.DataType == GridDataType.Text)
+                    {
+                        <td>@data.Value</td>
+                    }
+                    else if (data.DataType == GridDataType.PhotoPath)
+                    {
+                        <td style="background-image: url(../../Images/@data.Value);" class="grid-photo-thumbnail-cell"></td>
+                    }
+                    else if (data.DataType == GridDataType.Date)
+                    {
+                        <td>@(DateTime.Parse(data.Value).ToShortDateString())</td>
+                    }
+                    else if (data.DataType == GridDataType.Time)
+                    {
+                        <td>@(DateTime.Parse(data.Value).ToShortTimeString())</td>
+                    }
+                    else if (data.DataType == GridDataType.DateTime)
+                    {
+                        <td>@(DateTime.Parse(data.Value).ToString("yyyy-MM-dd HH:mm"))</td>
+                    }
+                    else if (data.DataType == GridDataType.Link)
+                    {
+                        <td><a href="~/@data.Value">@data.Value</a></td>
+                    }
+                    else
+                    {
+                        <td>@data.Value</td>
+                    }
                 }
             </tr>
         }
@@ -76,29 +98,29 @@
 
     function SubmitGridForm() {
         $("#FormGrid").submit();
-    }
+                        }
 
     $("#PageSize").change(function () {
         $("#PageIndex").val(1);
-        SubmitGridForm();
-    });
+                            SubmitGridForm();
+                        });
 
     $(".BtnPageIndex").click(function () {
         $("#PageIndex").val($(this).val());
-        SubmitGridForm();
-    });
+                            SubmitGridForm();
+                        });
 
     $(".header-ordering").click(function () {
         $("#OrderBy").val($(this).attr("data-orderby"));
         $("#SortOrder").val("@Model.SortOrder");
         $("#LastOrderBy").val("@Model.LastOrderBy");
-        SubmitGridForm();
-    });
+                            SubmitGridForm();
+                        });
 
     $(document).ready(function () {
         $(".accordion-toggle").addClass("center-block")
         $(".accordion-toggle").html("<i class='fa fa-filter' aria-hidden='true'></i> Filtry");
         $(".accordion-toggle").parent().parent().parent().removeClass("panel-default").addClass("panel-warning");
-    });
+                        });
 
 </script>

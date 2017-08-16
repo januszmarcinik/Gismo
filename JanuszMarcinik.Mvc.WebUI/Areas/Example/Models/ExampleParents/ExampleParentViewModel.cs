@@ -9,15 +9,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
     {
         public int Id { get; set; }
 
-        [Grid(Order = 2)]
         [Display(Name = "Text")]
+        [Grid(Order = 2, DataType = GridDataType.Text)]
         public string Text { get; set; }
 
-        [Grid(Order = 3)]
         [Display(Name = "Długi text")]
+        [Grid(Order = 3, DataType = GridDataType.Text)]
         public string LongText { get; set; }
 
-        [Grid(Order = 1, IsPhotoPath = true)]
+        [Grid(Order = 1, DataType = GridDataType.PhotoPath, DisplayName = "")]
         public string ThumbnailPath
         {
             get

@@ -1,5 +1,4 @@
-﻿using System;
-using JanuszMarcinik.Mvc.DataSource;
+﻿using JanuszMarcinik.Mvc.DataSource;
 using System.Linq;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
@@ -13,7 +12,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Example.Models.ExampleParents
         {
             foreach (var item in this.Rows)
             {
-                item.EditAction = JMap.Example.ExampleParents.Edit(item.PrimaryKeyId);
+                item.EditAction = JMap.Example.ExampleParents.Edit(item.PrimaryKey);
             }
         }
 
